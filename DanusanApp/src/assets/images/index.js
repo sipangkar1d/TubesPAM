@@ -6,6 +6,10 @@ import TombolTambah from './TombolTambah.png'
 import FotoProfil from './FotoProfil.png'
 import FotoGaris from './Garis.png'
 import FotoPanah from './Panah.png'
+import TombolDaftar from './TombolDaftar.png'
+import TombolLogin from './TombolLogin.png'
+import Background from './BackgroundSignIn.jpg'
+import DanusTeraLogo from './DanusTeraLogo.png'
 
 export{
     Logo,
@@ -15,5 +19,9 @@ export{
     TombolTambah,
     FotoProfil,
     FotoGaris,
-    FotoPanah
+    FotoPanah,
+    TombolLogin,
+    TombolDaftar,
+    Background,
+    DanusTeraLogo
 }

@@ -8,9 +8,9 @@ const Cari = () => {
         <View style={styles.container}>
             <ImageBackground source={ImageHeader} style={styles.header}></ImageBackground>
             <View style={styles.body}>
-                <View style={{position:'relative'}}>
-                    <TextInput placeholder="Cari danusan..." style={styles.textinput}/>
-                    <Image source={IkonSearchbar} style={styles.search}/>
+                <View style={{ position: 'relative' }}>
+                    <TextInput placeholder="Cari danusan..." style={styles.textinput} />
+                    <Image source={IkonSearchbar} style={styles.search} />
                 </View>
                 <View>
                     <ScrollView>
@@ -18,17 +18,17 @@ const Cari = () => {
                             <TouchableOpacity style={styles.jenisdanus}>
                                 <Image source={ImageMakanan} style={styles.imagemakanan}></Image>
                                 <View>
-                                    <Text style={{fontWeight: 'bold', fontSize: 16, color: '#696969', paddingTop: 15, paddingLeft: 25}}>Nama Makanan</Text>
-                                    <Text style={{fontSize: 12, color: '#696969', paddingTop: 5, paddingLeft: 25}}>Nama Penjual</Text>
-                                    <Text style={{fontSize: 12, color: '#b4b4b4', paddingTop: 5, paddingLeft: 25}}>1000 biji/hari</Text>
+                                    <Text style={{ fontWeight: 'bold', fontSize: 16, color: '#696969', paddingTop: 15, paddingLeft: 25 }}>Nama Makanan</Text>
+                                    <Text style={{ fontSize: 12, color: '#696969', paddingTop: 5, paddingLeft: 25 }}>Nama Penjual</Text>
+                                    <Text style={{ fontSize: 12, color: '#b4b4b4', paddingTop: 5, paddingLeft: 25 }}>1000 biji/hari</Text>
                                 </View>
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.jenisdanus}>
                                 <Image source={ImageMakanan} style={styles.imagemakanan}></Image>
                                 <View>
-                                    <Text style={{fontWeight: 'bold', fontSize: 16, color: '#696969', paddingTop: 15, paddingLeft: 25}}>Nama Makanan</Text>
-                                    <Text style={{fontSize: 12, color: '#696969', paddingTop: 5, paddingLeft: 25}}>Nama Penjual</Text>
-                                    <Text style={{fontSize: 12, color: '#b4b4b4', paddingTop: 5, paddingLeft: 25}}>1000 biji/hari</Text>
+                                    <Text style={{ fontWeight: 'bold', fontSize: 16, color: '#696969', paddingTop: 15, paddingLeft: 25 }}>Nama Makanan</Text>
+                                    <Text style={{ fontSize: 12, color: '#696969', paddingTop: 5, paddingLeft: 25 }}>Nama Penjual</Text>
+                                    <Text style={{ fontSize: 12, color: '#b4b4b4', paddingTop: 5, paddingLeft: 25 }}>1000 biji/hari</Text>
                                 </View>
                             </TouchableOpacity>
                         </View>
@@ -45,26 +45,26 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
-    container:{
+    container: {
         backgroundColor: '#138BFE',
         flex: 1,
-        alignItems: 'center' 
+        alignItems: 'center'
     },
-    header:{
-        width:161,
+    header: {
+        width: 161,
         height: 40,
         marginTop: 15,
         marginBottom: 15
     },
-    body:{
-        width: windowWidth+2,
+    body: {
+        width: windowWidth + 2,
         height: windowHeight,
         borderRadius: 20,
         borderColor: '#138BFE',
         borderWidth: 1,
         backgroundColor: 'white'
     },
-    textinput:{
+    textinput: {
         backgroundColor: '#e6e6e6',
         borderRadius: 20,
         height: 30,
@@ -78,19 +78,19 @@ const styles = StyleSheet.create({
         paddingTop: 10,
         paddingBottom: 6
     },
-    search:{
+    search: {
         position: 'absolute',
         left: 25,
         top: 25
     },
-    danus:{
-        paddingHorizontal: 20, 
+    danus: {
+        paddingHorizontal: 20,
         justifyContent: 'center',
         alignContent: 'center'
     },
-    jenisdanus:{
-        width: windowWidth-40,
-        height:100,
+    jenisdanus: {
+        width: windowWidth - 40,
+        height: 100,
         borderRadius: 15,
         borderColor: '#DCDCDC',
         borderWidth: 1,
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         flexWrap: 'wrap',
     },
-    imagemakanan:{
+    imagemakanan: {
         marginVertical: 15,
         marginLeft: 10
     },
