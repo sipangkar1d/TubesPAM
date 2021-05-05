@@ -2,7 +2,7 @@ import React from 'react'
 import { Dimensions, Image, ImageBackground, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { ImageHeader, ImageMakanan, TombolTambah } from '../../assets'
 
-const Beranda = () => {
+const Beranda = ({navigation}) => {
     return (
         <View style={styles.container}>
             <ImageBackground source={ImageHeader} style={styles.header}></ImageBackground>
@@ -12,7 +12,7 @@ const Beranda = () => {
                         <Text style={styles.teksheader}>Supplier Danus disekitar ITERA</Text>
                     </View>
                     <View style={styles.danus}>
-                        <TouchableOpacity style={styles.jenisdanus}>
+                        <TouchableOpacity style={styles.jenisdanus} onPress={() => navigation.navigate('DeskripsiDanus')}> 
                             <Image source={ImageMakanan} style={styles.imagemakanan}></Image>
                             <View>
                                 <Text style={{ fontWeight: 'bold', fontSize: 16, color: '#696969', paddingTop: 15, paddingLeft: 25 }}>Nama Makanan</Text>
@@ -20,7 +20,7 @@ const Beranda = () => {
                                 <Text style={{ fontSize: 12, color: '#b4b4b4', paddingTop: 5, paddingLeft: 25 }}>1000 biji/hari</Text>
                             </View>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.jenisdanus}>
+                        <TouchableOpacity style={styles.jenisdanus} onPress={() => navigation.navigate('DeskripsiDanus')}> 
                             <Image source={ImageMakanan} style={styles.imagemakanan}></Image>
                             <View>
                                 <Text style={{ fontWeight: 'bold', fontSize: 16, color: '#696969', paddingTop: 15, paddingLeft: 25 }}>Nama Makanan</Text>
@@ -28,7 +28,7 @@ const Beranda = () => {
                                 <Text style={{ fontSize: 12, color: '#b4b4b4', paddingTop: 5, paddingLeft: 25 }}>1000 biji/hari</Text>
                             </View>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.jenisdanus}>
+                        <TouchableOpacity style={styles.jenisdanus} onPress={() => navigation.navigate('DeskripsiDanus')}> 
                             <Image source={ImageMakanan} style={styles.imagemakanan}></Image>
                             <View>
                                 <Text style={{ fontWeight: 'bold', fontSize: 16, color: '#696969', paddingTop: 15, paddingLeft: 25 }}>Nama Makanan</Text>
@@ -36,31 +36,7 @@ const Beranda = () => {
                                 <Text style={{ fontSize: 12, color: '#b4b4b4', paddingTop: 5, paddingLeft: 25 }}>1000 biji/hari</Text>
                             </View>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.jenisdanus}>
-                            <Image source={ImageMakanan} style={styles.imagemakanan}></Image>
-                            <View>
-                                <Text style={{ fontWeight: 'bold', fontSize: 16, color: '#696969', paddingTop: 15, paddingLeft: 25 }}>Nama Makanan</Text>
-                                <Text style={{ fontSize: 12, color: '#696969', paddingTop: 5, paddingLeft: 25 }}>Nama Penjual</Text>
-                                <Text style={{ fontSize: 12, color: '#b4b4b4', paddingTop: 5, paddingLeft: 25 }}>1000 biji/hari</Text>
-                            </View>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.jenisdanus}>
-                            <Image source={ImageMakanan} style={styles.imagemakanan}></Image>
-                            <View>
-                                <Text style={{ fontWeight: 'bold', fontSize: 16, color: '#696969', paddingTop: 15, paddingLeft: 25 }}>Nama Makanan</Text>
-                                <Text style={{ fontSize: 12, color: '#696969', paddingTop: 5, paddingLeft: 25 }}>Nama Penjual</Text>
-                                <Text style={{ fontSize: 12, color: '#b4b4b4', paddingTop: 5, paddingLeft: 25 }}>1000 biji/hari</Text>
-                            </View>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.jenisdanus}>
-                            <Image source={ImageMakanan} style={styles.imagemakanan}></Image>
-                            <View>
-                                <Text style={{ fontWeight: 'bold', fontSize: 16, color: '#696969', paddingTop: 15, paddingLeft: 25 }}>Nama Makanan</Text>
-                                <Text style={{ fontSize: 12, color: '#696969', paddingTop: 5, paddingLeft: 25 }}>Nama Penjual</Text>
-                                <Text style={{ fontSize: 12, color: '#b4b4b4', paddingTop: 5, paddingLeft: 25 }}>1000 biji/hari</Text>
-                            </View>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.jenisdanus}>
+                        <TouchableOpacity style={styles.jenisdanus} onPress={() => navigation.navigate('DeskripsiDanus')}> 
                             <Image source={ImageMakanan} style={styles.imagemakanan}></Image>
                             <View>
                                 <Text style={{ fontWeight: 'bold', fontSize: 16, color: '#696969', paddingTop: 15, paddingLeft: 25 }}>Nama Makanan</Text>
@@ -71,7 +47,7 @@ const Beranda = () => {
                     </View>
                 </ScrollView>
                 <View style={styles.tambah}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate('TambahDanus')}>
                         <Image source={TombolTambah}></Image>
                     </TouchableOpacity>
                 </View>
