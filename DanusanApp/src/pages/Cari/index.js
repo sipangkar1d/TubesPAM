@@ -3,7 +3,7 @@ import { Dimensions, Image, ImageBackground, ScrollView, StyleSheet, Text, TextI
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { ImageHeader, IkonSearchbar, ImageMakanan } from '../../assets'
 
-const Cari = () => {
+const Cari = ({navigation}) => {
     return (
         <View style={styles.container}>
             <ImageBackground source={ImageHeader} style={styles.header}></ImageBackground>
@@ -15,7 +15,7 @@ const Cari = () => {
                 <View>
                     <ScrollView>
                         <View style={styles.danus}>
-                            <TouchableOpacity style={styles.jenisdanus}>
+                            <TouchableOpacity style={styles.jenisdanus} onPress={() => navigation.navigate('DeskripsiDanus')}>
                                 <Image source={ImageMakanan} style={styles.imagemakanan}></Image>
                                 <View>
                                     <Text style={{ fontWeight: 'bold', fontSize: 16, color: '#696969', paddingTop: 15, paddingLeft: 25 }}>Nama Makanan</Text>
@@ -23,7 +23,7 @@ const Cari = () => {
                                     <Text style={{ fontSize: 12, color: '#b4b4b4', paddingTop: 5, paddingLeft: 25 }}>1000 biji/hari</Text>
                                 </View>
                             </TouchableOpacity>
-                            <TouchableOpacity style={styles.jenisdanus}>
+                            <TouchableOpacity style={styles.jenisdanus} onPress={() => navigation.navigate('DeskripsiDanus')}>
                                 <Image source={ImageMakanan} style={styles.imagemakanan}></Image>
                                 <View>
                                     <Text style={{ fontWeight: 'bold', fontSize: 16, color: '#696969', paddingTop: 15, paddingLeft: 25 }}>Nama Makanan</Text>

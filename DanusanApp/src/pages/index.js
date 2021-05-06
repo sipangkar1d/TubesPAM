@@ -7,5 +7,17 @@ import Masuk from './Masuk'
 import Daftar from './Daftar'
 import TambahDanus from './TambahDanus'
 import DeskripsiDanus from './DeskripsiDanus'
+import UploadGambar from './UploadGambar'
 
-export { Beranda, Cari, Profil, Splash, Daftar, Masuk, SignIn, TambahDanus,DeskripsiDanus }
+export {
+    Beranda,
+    Cari,
+    Profil,
+    Splash,
+    Daftar,
+    Masuk,
+    SignIn,
+    TambahDanus,
+    DeskripsiDanus,
+    UploadGambar
+}

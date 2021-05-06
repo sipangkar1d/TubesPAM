@@ -11,6 +11,7 @@ import TombolLogin from './TombolLogin.png'
 import Background from './BackgroundSignIn.jpg'
 import DanusTeraLogo from './DanusTeraLogo.png'
 import Tambah from './Tambah.png'
+import TombolHapus from './TombolHapus.png'
 
 export{
     Logo,
@@ -25,5 +26,6 @@ export{
     TombolDaftar,
     Background,
     DanusTeraLogo,
-    Tambah
+    Tambah,
+    TombolHapus
 }

@@ -1,8 +1,23 @@
 import React from 'react'
-import { Dimensions, Image, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Alert, Dimensions, Image, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { ImageHeader, FotoProfil, FotoPanah, FotoGaris } from '../../assets'
 
-const Profil = () => {
+const Profil = ({navigation}) => {
+    const exit = () => {
+        Alert.alert(
+            "",
+            "Yakin ingin Keluar?",
+            [
+                {
+                    text: "Cancel",
+                },
+                {
+                    text:"OK",
+                    onPress: ()=> navigation.navigate("Splash")
+                }
+            ]
+        );
+    }
     return (
         <View style={styles.container}>
             <ImageBackground source={ImageHeader} style={styles.header}></ImageBackground>
@@ -44,7 +59,7 @@ const Profil = () => {
                             <Image source={FotoGaris} style={{ width: windowWidth - 40 }}></Image>
                             <Text style={{ fontSize: 14, bottom: 20, left: 5 }}>Atur Password</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.gantiisiprofil}>
+                        <TouchableOpacity style={styles.gantiisiprofil} onPress={exit}>
                             <Image source={FotoPanah} style={{ marginLeft: windowWidth - 50, width: 4, height: 10, marginTop: 25, marginBottom: 4 }}></Image>
                             <Image source={FotoGaris} style={{ width: windowWidth - 40 }}></Image>
                             <Text style={{ fontSize: 14, bottom: 20, left: 5 }}>Keluar</Text>

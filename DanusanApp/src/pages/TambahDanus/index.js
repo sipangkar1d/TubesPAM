@@ -1,53 +1,44 @@
 import React from 'react'
-import { Alert, Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import { FotoGaris, FotoPanah, IkonExit, Tambah } from '../../assets'
+import { Alert, Button, Dimensions, Image, ImagePickerIOS, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { IkonExit } from '../../assets';
+
 
 const TambahDanus = ({ navigation }) => {
     const tambahdanus = () => {
         Alert.alert(
-            "Alert",
-            "Supply Danus telah ditambahkan",
+            "",
+            "Tambahkan Danus?",
             [
-                {
-                    text: "OK",
-                    onPress: () => navigation.navigate('DanusTera')
-                }
+              {
+                text: "Batal",
+                onPress: () => console.log("Cancel Pressed"),
+                style: "cancel"
+              },
+              { text: "Tambahkan", onPress: () => console.log("OK Pressed") }
             ]
-        );
-    }
+          );
+    };
+
     return (
         <View style={styles.container}>
             <View style={styles.body}>
-                <TouchableOpacity style={{ alignSelf: 'baseline', position: 'relative', left: windowWidth - 40, top: 10 }} onPress={() => navigation.navigate('DanusTera')}>
-                    <Image source={IkonExit} ></Image>
+                <TouchableOpacity style={{alignSelf: 'flex-end', right: 10, top: 10}} onPress={ ()=>navigation.navigate('DanusTera')}>
+                    <Image source={IkonExit } ></Image>
                 </TouchableOpacity>
                 <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#696969', position: 'absolute', alignSelf: 'baseline', paddingLeft: 20, top: 25 }}>
                     Tambahkan Supply DanusTera
                     </Text>
-                <View style={{ marginTop: 50 }}>
-                    <TouchableOpacity style={styles.form}>
-                        <Image source={FotoPanah} style={{ marginLeft: windowWidth - 50, width: 4, height: 10, marginTop: 10, marginBottom: 4 }}></Image>
-                        <Image source={FotoGaris} style={{ width: windowWidth - 40 }}></Image>
-                        <Text style={{ fontSize: 14, bottom: 20 }}>Jenis Makanan</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.form}>
-                        <Image source={FotoPanah} style={{ marginLeft: windowWidth - 50, width: 4, height: 10, marginTop: 10, marginBottom: 4 }}></Image>
-                        <Image source={FotoGaris} style={{ width: windowWidth - 40 }}></Image>
-                        <Text style={{ fontSize: 14, bottom: 20 }}>Nama Makanan</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.form}>
-                        <Image source={FotoPanah} style={{ marginLeft: windowWidth - 50, width: 4, height: 10, marginTop: 10, marginBottom: 4 }}></Image>
-                        <Image source={FotoGaris} style={{ width: windowWidth - 40 }}></Image>
-                        <Text style={{ fontSize: 14, bottom: 20 }}>Stok Perhari</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.form}>
-                        <Image source={FotoPanah} style={{ marginLeft: windowWidth - 50, width: 4, height: 10, marginTop: 10, marginBottom: 4 }}></Image>
-                        <Image source={FotoGaris} style={{ width: windowWidth - 40 }}></Image>
-                        <Text style={{ fontSize: 14, bottom: 20 }}>Upload Gambar</Text>
+                <View style={{ marginTop: 30, alignSelf:'flex-start', paddingLeft: 20 }}>
+                    <TextInput placeholder="Jenis Makanan" style={styles.form}></TextInput>
+                    <TextInput placeholder="Nama Makanan" style={styles.form}></TextInput>
+                    <TextInput placeholder="Stok Perhari" style={styles.form}></TextInput>
+
+                    <TouchableOpacity onPress={ () => navigation.navigate('Tambah Gambar')}>
+                        <Text style={{color: '#606060', marginTop: 10, padding: 5, borderWidth: 1, width: 93}}>Pilih Gambar</Text>
                     </TouchableOpacity>
                 </View>
-                <TouchableOpacity style={{ top: 20 }} onPress={tambahdanus}>
-                    <Image source={Tambah}></Image>
+                <TouchableOpacity style={{ top: 20 }} >
+                    <Button style={styles.tambah} title="Tambah" onPress={tambahdanus}/>
                 </TouchableOpacity>
             </View>
         </View>
@@ -75,11 +66,12 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 20,
         alignItems: 'center',
     },
-    form: {
-        marginTop: -10
-    },
-    tombol: {
-
+    form:{
+        borderBottomWidth: 1,
+        borderColor: '#656565',
+        width: windowWidth-40,
+        fontSize: 14,
+        paddingTop: 10,
+        paddingBottom: 5
     }
-
 })

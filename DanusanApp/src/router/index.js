@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Beranda, Cari, Daftar, DeskripsiDanus, Masuk, Profil, SignIn, Splash, TambahDanus } from '../pages';
+import { Beranda, Cari, Daftar, DeskripsiDanus, Masuk, Profil, SignIn, Splash, TambahDanus, UploadGambar } from '../pages';
 import { BottomNavigator } from '../components'
 
 const Stack = createStackNavigator();
@@ -23,13 +23,13 @@ const Router = () => {
         <Stack.Navigator initialRouteName="Splash">
             <Stack.Screen name="Splash" component={Splash} options={{ headerShown: false }} />
             <Stack.Screen name="DanusTera" component={DanusTera} style={styles.Header} options={{ headerShown: false }} />
-            <Stack.Screen name="SignIn" component={SignIn}  options={{ headerShown: false }} />
-            <Stack.Screen name="Masuk" component={Masuk}  options={{ headerShown: false }} />
-            <Stack.Screen name="Daftar" component={Daftar}  options={{ headerShown: false }} />
-            <Stack.Screen name="TambahDanus" component={TambahDanus}  options={{ headerShown: false }} />
-            <Stack.Screen name="DeskripsiDanus" component={DeskripsiDanus}  options={{ headerShown: false }} />
+            <Stack.Screen name="SignIn" component={SignIn} options={{ headerShown: false }} />
+            <Stack.Screen name="Masuk" component={Masuk} options={{ headerShown: false }} />
+            <Stack.Screen name="Daftar" component={Daftar} options={{ headerShown: false }} />
+            <Stack.Screen name="TambahDanus" component={TambahDanus} options={{ headerShown: false }} />
+            <Stack.Screen name="DeskripsiDanus" component={DeskripsiDanus} options={{ headerShown: false }} />
+            <Stack.Screen name="Tambah Gambar" component={UploadGambar} />
 
-            
         </Stack.Navigator>
     )
 }
