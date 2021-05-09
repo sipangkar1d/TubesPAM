@@ -1,5 +1,13 @@
 import React from 'react'
-import { Image, ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import {
+    Image,
+    ImageBackground,
+    StyleSheet,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View
+} from 'react-native'
 import { Background, DanusTeraLogo, TombolLogin } from '../../assets'
 
 const Masuk = ({ navigation }) => {
@@ -9,15 +17,23 @@ const Masuk = ({ navigation }) => {
             <View style={{ bottom: 40 }}>
                 <View name="Username" >
                     <Text style={styles.form}>Username</Text>
-                    <TextInput placeholder="Masukkan Username" style={styles.placeholder}></TextInput>
+                    <TextInput
+                        placeholder="Masukkan Username"
+                        style={styles.placeholder}
+                    >
+                    </TextInput>
                 </View>
                 <View name="Password" >
                     <Text style={styles.form}>Password</Text>
-                    <TextInput placeholder="Masukkan Password" style={styles.placeholder}></TextInput>
+                    <TextInput
+                        placeholder="Masukkan Password"
+                        style={styles.placeholder}
+                    >
+                    </TextInput>
                 </View>
             </View>
 
-            <TouchableOpacity style={{ bottom: 15 }} onPress={() => navigation.navigate('DanusTera')}>
+            <TouchableOpacity style={{ bottom: 15 }} onPress={() => navigation.navigate('Beranda')}>
                 <Image source={TombolLogin}></Image>
             </TouchableOpacity>
             <TouchableOpacity style={{ bottom: 20 }} onPress={() => navigation.navigate('Daftar')}>

@@ -54,7 +54,7 @@ const Profil = ({navigation}) => {
                     </View>
 
                     <View style={styles.profilbawah}>
-                        <TouchableOpacity style={styles.gantiisiprofil}>
+                        <TouchableOpacity style={styles.gantiisiprofil} onPress={()=> navigation.navigate('AturPassword')}>
                             <Image source={FotoPanah} style={{ marginLeft: windowWidth - 50, width: 4, height: 10, marginTop: 25, marginBottom: 4 }}></Image>
                             <Image source={FotoGaris} style={{ width: windowWidth - 40 }}></Image>
                             <Text style={{ fontSize: 14, bottom: 20, left: 5 }}>Atur Password</Text>

@@ -11,10 +11,9 @@ const TambahDanus = ({ navigation }) => {
             [
               {
                 text: "Batal",
-                onPress: () => console.log("Cancel Pressed"),
-                style: "cancel"
+                
               },
-              { text: "Tambahkan", onPress: () => console.log("OK Pressed") }
+              { text: "Tambahkan", onPress: () => navigation.navigate('DanusTera')}
             ]
           );
     };

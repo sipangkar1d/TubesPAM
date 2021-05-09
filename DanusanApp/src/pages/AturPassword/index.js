@@ -1,12 +1,12 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
-const UploadGambar = () => {
+const AturPassword = () => {
     return (
         <View style={styles.container}>
             <View style={styles.body}>
                 <View>
-                    <Text>Upload Gambar</Text> 
+                    <Text>Atur AturPassword</Text> 
                 </View>
             </View>
 
@@ -14,7 +14,7 @@ const UploadGambar = () => {
     )
 }
 
-export default UploadGambar
+export default AturPassword
 
 const styles = StyleSheet.create({
     container: {
