@@ -13,12 +13,30 @@ import {IkonExit, ImageMakanan, TombolHapus} from '../../assets';
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      nama_penjual: 'Daniel Sipangkar',
+      nama_makanan: 'Bakwan Jagung',
+      deksripsi_makanan: 'Gorengan renyah murah dan berkualitas',
+      alamat: 'Jl. yang dulu kita kenang',
+      no_telp: '087812345678',
+      harga_satuan: '800',
+      stok_harian: '1000',
+      gambar: '',
+    };
   }
 
   render() {
     const {navigation} = this.props;
-    const {} = this.state;
+    const {
+      nama_penjual,
+      nama_makanan,
+      deksripsi_makanan,
+      alamat,
+      no_telp,
+      harga_satuan,
+      stok_harian,
+      gambar,
+    } = this.state;
     return (
       <View style={styles.container}>
         <View style={styles.body}>
@@ -26,23 +44,28 @@ class Login extends Component {
           <TouchableOpacity
             style={{alignSelf: 'baseline', left: windowWidth - 40, bottom: 60}}
             onPress={() => navigation.navigate('DanusTera')}>
-            <Image source={IkonExit}></Image>
+            <Image source={IkonExit} style={styles.exit}></Image>
           </TouchableOpacity>
-          <Image source={ImageMakanan} style={styles.img} />
-          <View style={styles.deksripsi}>
+          <Text style={styles.img}>{gambar}</Text>
+          <View style={{flexDirection: 'row'}}>
+            <Text style={styles.desk}>{deksripsi_makanan}</Text>
+          </View>
+          <View style={styles.form}>
             <View style={styles.kiri}>
-              <Text style={styles.teks}>Penjual</Text>
-              <Text style={styles.teks}>Alamat Penjual</Text>
+              <Text style={styles.teks}>Nama Penjual</Text>
               <Text style={styles.teks}>Nama Makanan</Text>
-              <Text style={styles.teks}>Stok Makanan</Text>
+              <Text style={styles.teks}>Alamat Penjual</Text>
               <Text style={styles.teks}>No. Telepon</Text>
+              <Text style={styles.teks}>Harga Satuan</Text>
+              <Text style={styles.teks}>Stok Harian</Text>
             </View>
             <View style={styles.kanan}>
-              <Text style={styles.teks}>: Nama Penjual</Text>
-              <Text style={styles.teks}>: Alamat </Text>
-              <Text style={styles.teks}>: Bakwan</Text>
-              <Text style={styles.teks}>: 1000 biji/hari</Text>
-              <Text style={styles.teks}>: +123456789</Text>
+              <Text style={styles.teks}>: {nama_penjual}</Text>
+              <Text style={styles.teks}>: {nama_makanan}</Text>
+              <Text style={styles.teks}>: {alamat}</Text>
+              <Text style={styles.teks}>: {no_telp}</Text>
+              <Text style={styles.teks}>: Rp. {harga_satuan}</Text>
+              <Text style={styles.teks}>: {stok_harian} /hari</Text>
             </View>
           </View>
           <TouchableOpacity
@@ -82,8 +105,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   heading: {
-    paddingVertical: 20,
-    color: '#696969',
+    paddingTop: 20,
+    color: '#138BFE',
     fontWeight: 'bold',
     fontSize: 24,
   },
@@ -95,14 +118,13 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginTop: -10,
   },
-  deksripsi: {
+  form: {
     position: 'relative',
     flexDirection: 'row',
-    marginTop: 30,
     alignSelf: 'flex-start',
     paddingLeft: 20,
   },
-  kiri: {},
+
   kanan: {
     paddingLeft: 20,
   },
@@ -113,5 +135,14 @@ const styles = StyleSheet.create({
   },
   hapus: {
     marginTop: 50,
+  },
+  exit: {
+    top: 20,
+  },
+  desk: {
+    paddingVertical: 10,
+    alignSelf: 'flex-start',
+    paddingHorizontal: 20,
+    flex: 1,
   },
 });
