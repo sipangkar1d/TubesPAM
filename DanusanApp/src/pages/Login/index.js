@@ -64,20 +64,18 @@ class Login extends Component {
     this.refs.loading.show();
 
     const {username, password} = this.state;
-    
+
     if (username == '') {
       alert('Username masih kosong');
       this.refs.loading.show(false);
-
     } else if (password == '') {
       alert('Password masih kosong');
       this.refs.loading.show(false);
-
     } else {
-      fetch('http://10.117.94.111/api/Login.php', {
+      fetch('http://10.117.89.42/api/API-DanusanApp/API/Login.php', {
         method: 'POST',
         header: {
-          'Accept': 'application/json',
+          Accept: 'application/json',
           'Content-type': 'application/json',
         },
         body: JSON.stringify(this.state),
@@ -85,18 +83,21 @@ class Login extends Component {
         .then(response => response.json())
         .then(responseJson => {
           if (responseJson == 'ok') {
-            // redirect to profile page
-            // alert('Successfully Login');
+            // redirect to Beranda page
+            this.refs.loading.show(false);
             this.props.navigation.navigate('DanusTera');
           } else {
-            alert();
+            this.refs.loading.show(false);
+            alert(responseJson);
           }
         })
         .catch(err => {
+          this.refs.loading.show(false);
           console.error(err);
         });
     }
   };
+  
 }
 
 export default Login;

@@ -1,125 +1,166 @@
-import React from 'react'
-import { Alert, Dimensions, Image, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import { ImageHeader, FotoProfil, FotoPanah, FotoGaris } from '../../assets'
+import React, {Component} from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  Image,
+  ImageBackground,
+  TouchableOpacity,
+  Alert,
+} from 'react-native';
+import {FotoPanah, FotoProfil, ImageHeader} from '../../assets';
 
-const Profil = ({navigation}) => {
-    const exit = () => {
-        Alert.alert(
-            "",
-            "Yakin ingin Keluar?",
-            [
-                {
-                    text: "Cancel",
-                },
-                {
-                    text:"OK",
-                    onPress: ()=> navigation.navigate("Splash")
-                }
-            ]
-        );
-    }
+class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: 'Sipangkar',
+      nama_lengkap: 'Daniel Sipangkar',
+      email: 'daniel.118140080',
+      alamat: 'Jl. in aja dulu',
+      jenis_kelamin: 'Laki-laki',
+      no_telp: '087812345678',
+    };
+  }
+
+  render() {
+    const {
+      username,
+      nama_lengkap,
+      email,
+      alamat,
+      jenis_kelamin,
+      no_telp,
+    } = this.state;
+    const {navigation} = this.props;
     return (
-        <View style={styles.container}>
-            <ImageBackground source={ImageHeader} style={styles.header}></ImageBackground>
-            <View style={styles.body}>
-                <View style={styles.profil}>
-                    <Image source={FotoProfil}></Image>
-                    <Text style={styles.namalengkap}>Nama Lengkap</Text>
-                    <View>
-                        <TouchableOpacity style={styles.gantiisiprofil}>
-                            <Image source={FotoPanah} style={{ marginLeft: windowWidth - 50, width: 4, height: 10, marginTop: 25, marginBottom: 4 }}></Image>
-                            <Image source={FotoGaris} style={{ width: windowWidth - 40 }}></Image>
-                            <Text style={{ fontSize: 14, bottom: 20, left: 5 }}>Username</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.gantiisiprofil}>
-                            <Image source={FotoPanah} style={{ marginLeft: windowWidth - 50, width: 4, height: 10, marginTop: 25, marginBottom: 4 }}></Image>
-                            <Image source={FotoGaris} style={{ width: windowWidth - 40 }}></Image>
-                            <Text style={{ fontSize: 14, bottom: 20, left: 5 }}>No. Telepon</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.gantiisiprofil}>
-                            <Image source={FotoPanah} style={{ marginLeft: windowWidth - 50, width: 4, height: 10, marginTop: 25, marginBottom: 4 }}></Image>
-                            <Image source={FotoGaris} style={{ width: windowWidth - 40 }}></Image>
-                            <Text style={{ fontSize: 14, bottom: 20, left: 5 }}>Email</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.gantiisiprofil}>
-                            <Image source={FotoPanah} style={{ marginLeft: windowWidth - 50, width: 4, height: 10, marginTop: 25, marginBottom: 4 }}></Image>
-                            <Image source={FotoGaris} style={{ width: windowWidth - 40 }}></Image>
-                            <Text style={{ fontSize: 14, bottom: 20, left: 5 }}>Alamat</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.gantiisiprofil}>
-                            <Image source={FotoPanah} style={{ marginLeft: windowWidth - 50, width: 4, height: 10, marginTop: 25, marginBottom: 4 }}></Image>
-                            <Image source={FotoGaris} style={{ width: windowWidth - 40 }}></Image>
-                            <Text style={{ fontSize: 14, bottom: 20, left: 5 }}>Jenis Kelamin</Text>
-                        </TouchableOpacity>
-                    </View>
-
-                    <View style={styles.profilbawah}>
-                        <TouchableOpacity style={styles.gantiisiprofil} onPress={()=> navigation.navigate('AturPassword')}>
-                            <Image source={FotoPanah} style={{ marginLeft: windowWidth - 50, width: 4, height: 10, marginTop: 25, marginBottom: 4 }}></Image>
-                            <Image source={FotoGaris} style={{ width: windowWidth - 40 }}></Image>
-                            <Text style={{ fontSize: 14, bottom: 20, left: 5 }}>Atur Password</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.gantiisiprofil} onPress={exit}>
-                            <Image source={FotoPanah} style={{ marginLeft: windowWidth - 50, width: 4, height: 10, marginTop: 25, marginBottom: 4 }}></Image>
-                            <Image source={FotoGaris} style={{ width: windowWidth - 40 }}></Image>
-                            <Text style={{ fontSize: 14, bottom: 20, left: 5 }}>Keluar</Text>
-                        </TouchableOpacity>
-                    </View>
-
+      <View style={styles.container}>
+        <ImageBackground
+          source={ImageHeader}
+          style={styles.header}></ImageBackground>
+        <View style={styles.body}>
+          <ScrollView>
+            <View style={styles.profil}>
+              <Image source={FotoProfil}></Image>
+              <Text style={styles.namalengkap}>{nama_lengkap}</Text>
+              <View style={styles.listdata}>
+                <View style={styles.row}>
+                  <Text style={styles.teksform}>Username</Text>
+                  <Text style={styles.data}>{username}</Text>
                 </View>
+                <View style={styles.row}>
+                  <Text style={styles.teksform}>Email</Text>
+                  <Text style={styles.data}>{email}</Text>
+                </View>
+                <View style={styles.row}>
+                  <Text style={styles.teksform}>Alamat</Text>
+                  <Text style={styles.data}>{alamat}</Text>
+                </View>
+                <View style={styles.row}>
+                  <Text style={styles.teksform}>Jenis Kelamin</Text>
+                  <Text style={styles.data}>{jenis_kelamin}</Text>
+                </View>
+                <View style={[styles.row, {borderBottomWidth: 1}]}>
+                  <Text style={styles.teksform}>No Telepon</Text>
+                  <Text style={styles.data}>{no_telp}</Text>
+                </View>
+              </View>
             </View>
+            <View style={styles.listdata}>
+              <TouchableOpacity
+                style={styles.row}
+                onPress={() => navigation.navigate('AturPassword')}>
+                <Text style={styles.teksform}>Atur Password</Text>
+                <Image source={FotoPanah} style={styles.panah}></Image>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.row} onPress={()=>{
+                Alert.alert(
+                  "",
+                  "Keluar?",
+                  [
+                    {
+                      text: "Batal"
+                    },
+                    {
+                      text: "Keluar",
+                      onPress: ()=>navigation.navigate('Login')
+                    }
+                  ]
+                )
+              }}>
+                <Text style={styles.teksform}>Keluar</Text>
+                <Image source={FotoPanah} style={styles.panah}></Image>
+              </TouchableOpacity>
+            </View>
+          </ScrollView>
         </View>
-    )
+      </View>
+    );
+  }
 }
 
-export default Profil
-
-
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
+export default Login;
 
 const styles = StyleSheet.create({
-    container: {
-        backgroundColor: '#138BFE',
-        flex: 1,
-        alignItems: 'center'
-    },
-    header: {
-        width: 161,
-        height: 40,
-        marginTop: 15,
-        marginBottom: 15
-    },
-    body: {
-        width: windowWidth + 2,
-        height: windowHeight,
-        borderTopLeftRadius: 20,
-        borderTopRightRadius: 20,
-        borderColor: '#138BFE',
-        borderWidth: 1,
-        backgroundColor: 'white',
-        flex: 1,
-    },
-    teksheader: {
-        paddingLeft: 20,
-        paddingTop: 15,
-        color: '#696969',
-        fontWeight: 'bold',
-    },
-    profil: {
-        alignContent: 'center',
-        alignItems: 'center',
-        paddingTop: 20
-    },
-    namalengkap: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: '#696969',
-    },
-    gantiisiprofil: {
-        marginBottom: -25
-    },
-    profilbawah: {
-        paddingTop: 50
-    }
-})
+  container: {
+    backgroundColor: '#138BFE',
+    flex: 1,
+    alignItems: 'center',
+  },
+  header: {
+    width: 161,
+    height: 40,
+    marginTop: 15,
+    marginBottom: 15,
+  },
+  body: {
+    width: '101%',
+    height: '100%',
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    borderColor: '#138BFE',
+    borderWidth: 1,
+    backgroundColor: 'white',
+    flex: 1,
+  },
+  profil: {
+    alignContent: 'center',
+    alignItems: 'center',
+    paddingTop: 20,
+  },
+  namalengkap: {
+    fontWeight: 'bold',
+    fontSize: 18,
+    color: '#555',
+    marginTop: 5,
+  },
+  listdata: {
+    alignSelf: 'flex-start',
+    width: '100%',
+    backgroundColor: '#f5f5f5',
+    marginVertical: 15,
+  },
+  row: {
+    borderTopWidth: 1,
+    borderColor: '#dedede',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+  },
+  teksform: {
+    fontSize: 14,
+    color: '#555',
+  },
+  data: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#222',
+    paddingTop: 5,
+  },
+  panah: {
+    alignSelf: 'flex-end',
+    right: 20,
+    bottom: 15,
+    position: 'absolute',
+  },
+});

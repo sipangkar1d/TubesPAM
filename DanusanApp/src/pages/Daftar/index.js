@@ -208,7 +208,7 @@ class Register extends Component {
       this.refs.loading.show(false);
     } else {
       this.refs.loading.show();
-      fetch('http://10.117.94.111/api/buatAkun.php', {
+      fetch('http://10.117.89.42/api/API-DanusanApp/API/buatAkun.php', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -217,16 +217,25 @@ class Register extends Component {
         body: JSON.stringify(this.state.formData),
       })
         .then(response => response.json())
-        .then(() => {
-          setTimeout(() => {
+        .then(responseJson => {
+          if (responseJson == 'Akun berhasil di daftarkan') {
+            setTimeout(() => {
+              this.refs.loading.show(false);
+              Alert.alert('Notify', 'Akun berhasil didaftarkan', [
+                {
+                  text: 'OK',
+                  onPress: () => navigation.navigate('Login'),
+                },
+              ]);
+            }, 1000);
+          } else {
             this.refs.loading.show(false);
-            Alert.alert('Notify', 'Akun berhasil didaftarkan', [
+            Alert.alert('Notify', 'Username atau email sudah digunakan', [
               {
                 text: 'OK',
-                onPress: () => navigation.navigate('Login'),
               },
             ]);
-          }, 1000);
+          }
         })
         .catch(error => {
           this.refs.loading.show(false);
