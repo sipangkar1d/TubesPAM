@@ -13,7 +13,7 @@ import {
 import RadioForm from 'react-native-simple-radio-button';
 import Loading from 'react-native-whc-loading';
 
-class Register extends Component {
+class Daftar extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -44,6 +44,7 @@ class Register extends Component {
       no_telp,
     } = this.state.formData;
     const {navigation} = this.props;
+
     return (
       <ScrollView>
         <KeyboardAvoidingView style={styles.container} enabled>
@@ -192,7 +193,6 @@ class Register extends Component {
       password,
       email,
       alamat,
-      jenis_kelamin,
       no_telp,
     } = this.state.formData;
     this.refs.loading.show();
@@ -204,11 +204,15 @@ class Register extends Component {
       alamat == '' ||
       no_telp == ''
     ) {
-      alert('Harap isi Semua data');
+      Alert.alert('', 'Harap isi semua data', [
+        {
+          text: 'OK',
+        },
+      ]);
       this.refs.loading.show(false);
     } else {
       this.refs.loading.show();
-      fetch('http://10.117.89.42/api/API-DanusanApp/API/buatAkun.php', {
+      fetch('http://10.117.90.83/api/API-DanusanApp/API/buatAkun.php', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -221,7 +225,7 @@ class Register extends Component {
           if (responseJson == 'Akun berhasil di daftarkan') {
             setTimeout(() => {
               this.refs.loading.show(false);
-              Alert.alert('Notify', 'Akun berhasil didaftarkan', [
+              Alert.alert('', responseJson, [
                 {
                   text: 'OK',
                   onPress: () => navigation.navigate('Login'),
@@ -230,7 +234,7 @@ class Register extends Component {
             }, 1000);
           } else {
             this.refs.loading.show(false);
-            Alert.alert('Notify', 'Username atau email sudah digunakan', [
+            Alert.alert('', 'Username atau email sudah digunakan', [
               {
                 text: 'OK',
               },
@@ -245,7 +249,7 @@ class Register extends Component {
   };
 }
 
-export default Register;
+export default Daftar;
 
 const WindowWidth = Dimensions.get('window').width;
 

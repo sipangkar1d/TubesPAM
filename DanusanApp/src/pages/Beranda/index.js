@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import {ImageHeader, ImageMakanan, TombolTambah} from '../../assets';
 
-class Login extends Component {
+class Beranda extends Component {
   constructor(props) {
     super(props);
     this.state = {nama_makanan: 'Donat', stok_harian: '1000'};
@@ -92,7 +92,7 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default Beranda;
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 

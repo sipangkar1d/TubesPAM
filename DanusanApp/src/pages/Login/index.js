@@ -72,7 +72,7 @@ class Login extends Component {
       alert('Password masih kosong');
       this.refs.loading.show(false);
     } else {
-      fetch('http://10.117.89.42/api/API-DanusanApp/API/Login.php', {
+      fetch('http://10.117.90.83/api/API-DanusanApp/API/Login.php', {
         method: 'POST',
         header: {
           Accept: 'application/json',
@@ -97,7 +97,6 @@ class Login extends Component {
         });
     }
   };
-  
 }
 
 export default Login;

@@ -8,9 +8,9 @@ import {
   Dimensions,
   Alert,
 } from 'react-native';
-import {IkonExit, ImageMakanan, TombolHapus} from '../../assets';
+import {IkonExit, TombolHapus} from '../../assets';
 
-class Login extends Component {
+class DeskripsiDanus extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -88,7 +88,7 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default DeskripsiDanus;
 const windowWidth = Dimensions.get('window').width;
 const styles = StyleSheet.create({
   container: {

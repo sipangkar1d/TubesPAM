@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import {FotoPanah, FotoProfil, ImageHeader} from '../../assets';
 
-class Login extends Component {
+class Profil extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -100,7 +100,7 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default Profil;
 
 const styles = StyleSheet.create({
   container: {
