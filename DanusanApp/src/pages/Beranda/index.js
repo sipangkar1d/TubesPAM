@@ -10,7 +10,7 @@ import {
   Alert,
   Dimensions,
 } from 'react-native';
-import {ImageHeader, ImageMakanan, TombolTambah} from '../../assets';
+import {ImageHeader, noImage, TombolTambah} from '../../assets';
 
 class Beranda extends Component {
   constructor(props) {
@@ -38,8 +38,8 @@ class Beranda extends Component {
                 style={styles.jenisdanus}
                 onPress={() => navigation.navigate('DeskripsiDanus')}>
                 <Image
-                  source={ImageMakanan}
-                  style={styles.imagemakanan}></Image>
+                  source={noImage}
+                  style={styles.noImage}></Image>
                 <View>
                   <Text style={styles.namamakanan}>{nama_makanan}</Text>
                   <Text style={styles.biji}>{stok_harian} biji/hari</Text>
@@ -49,8 +49,8 @@ class Beranda extends Component {
                 style={styles.jenisdanus}
                 onPress={() => navigation.navigate('DeskripsiDanus')}>
                 <Image
-                  source={ImageMakanan}
-                  style={styles.imagemakanan}></Image>
+                  source={noImage}
+                  style={styles.noImage}></Image>
                 <View>
                   <Text style={styles.namamakanan}>{nama_makanan}</Text>
                   <Text style={styles.biji}>{stok_harian} biji/hari</Text>
@@ -60,8 +60,8 @@ class Beranda extends Component {
                 style={styles.jenisdanus}
                 onPress={() => navigation.navigate('DeskripsiDanus')}>
                 <Image
-                  source={ImageMakanan}
-                  style={styles.imagemakanan}></Image>
+                  source={noImage}
+                  style={styles.noImage}></Image>
                 <View>
                   <Text style={styles.namamakanan}>{nama_makanan}</Text>
                   <Text style={styles.biji}>{stok_harian} biji/hari</Text>
@@ -71,8 +71,8 @@ class Beranda extends Component {
                 style={styles.jenisdanus}
                 onPress={() => navigation.navigate('DeskripsiDanus')}>
                 <Image
-                  source={ImageMakanan}
-                  style={styles.imagemakanan}></Image>
+                  source={noImage}
+                  style={styles.noImage}></Image>
                 <View>
                   <Text style={styles.namamakanan}>{nama_makanan}</Text>
                   <Text style={styles.biji}>{stok_harian} biji/hari</Text>
@@ -138,14 +138,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
   },
-  imagemakanan: {
+  noImage: {
     marginVertical: 15,
     marginLeft: 10,
-  },
-  tambah: {
-    bottom: 65,
-    right: 10,
-    paddingLeft: windowWidth - 60,
+    width: 70,
+    height: 70,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#dedede',
   },
   namamakanan: {
     fontWeight: 'bold',
@@ -160,4 +160,9 @@ const styles = StyleSheet.create({
     paddingTop: 5,
     paddingLeft: 25,
   },
+  tambah: {
+    bottom: 65,
+    right: 10,
+    paddingLeft: windowWidth - 60,
+  }
 });

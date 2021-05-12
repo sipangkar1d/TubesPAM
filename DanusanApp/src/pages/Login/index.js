@@ -85,10 +85,10 @@ class Login extends Component {
           if (responseJson == 'ok') {
             // redirect to Beranda page
             this.refs.loading.show(false);
-            this.props.navigation.navigate('DanusTera');
+            this.props.navigation.navigate('Beranda');
           } else {
             this.refs.loading.show(false);
-            alert(responseJson);
+            alert(JSON.stringify(responseJson));
           }
         })
         .catch(err => {

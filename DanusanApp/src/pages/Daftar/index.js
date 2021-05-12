@@ -234,11 +234,12 @@ class Daftar extends Component {
             }, 1000);
           } else {
             this.refs.loading.show(false);
-            Alert.alert('', 'Username atau email sudah digunakan', [
-              {
-                text: 'OK',
-              },
-            ]);
+            alert(JSON.stringify(responseJson));
+            // Alert.alert('', 'Username atau email sudah digunakan', [
+            //   {
+            //     text: 'OK',
+            //   },
+            // ]);
           }
         })
         .catch(error => {

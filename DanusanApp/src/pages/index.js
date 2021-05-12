@@ -5,7 +5,6 @@ import Splash from './Splash'
 import Daftar from './Daftar'
 import TambahDanus from './TambahDanus'
 import DeskripsiDanus from './DeskripsiDanus'
-import UploadGambar from './UploadGambar'
 import AturPassword from './AturPassword'
 
 export {
@@ -16,6 +15,5 @@ export {
     Daftar,
     TambahDanus,
     DeskripsiDanus,
-    UploadGambar,
     AturPassword
 }

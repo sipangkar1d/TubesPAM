@@ -164,6 +164,7 @@ class TambahDanus extends Component {
       deskripsi_makanan,
       stok_harian,
       harga_satuan,
+      username,
     } = this.state.formData;
 
     const {navigation} = this.props;
@@ -174,11 +175,12 @@ class TambahDanus extends Component {
     formDataPost.append('photo', {
       uri: avatatarSrc.path,
       type: avatatarSrc.mime,
-      name: "Gambar-Danus",
+      name: 'Gambar-Danus',
     });
     if (
       nama_makanan == '' ||
       deskripsi_makanan == '' ||
+      username == '' ||
       stok_harian == '' ||
       harga_satuan == ''
     ) {
@@ -192,7 +194,7 @@ class TambahDanus extends Component {
         method: 'POST',
         headers: {
           Accept: 'application/json',
-          'Content-Type': "multipart/form-data",
+          'Content-Type': 'multipart/form-data',
         },
         body: formDataPost,
       })
@@ -208,11 +210,12 @@ class TambahDanus extends Component {
               ]);
             }, 1000);
           } else {
-            Alert.alert('', responseJson, [
-              {
-                text: 'OK',
-              },
-            ]);
+            alert(responseJson);
+            // Alert.alert('', responseJson, [
+            //   {
+            //     text: 'OK',
+            //   },
+            // ]);
           }
         })
         .catch(error => {

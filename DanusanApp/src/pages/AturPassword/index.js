@@ -1,33 +1,113 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import React, {Component} from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  KeyboardAvoidingView,
+  TextInput,
+  Button,
+  Dimensions,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
+import Loading from 'react-native-whc-loading';
+import {IkonExit} from '../../assets';
 
-const AturPassword = () => {
+class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      password: '',
+      confpassword: '',
+    };
+  }
+
+  render() {
+    const {navigation} = this.props;
     return (
-        <View style={styles.container}>
-            <View style={styles.body}>
-                <View>
-                    <Text>Atur AturPassword</Text> 
-                </View>
-            </View>
-
-        </View>
-    )
+      <ScrollView>
+        <KeyboardAvoidingView style={styles.container} enabled>
+          <TouchableOpacity
+            style={styles.exit}
+            onPress={() => navigation.navigate('DanusTera')}>
+            <Image source={IkonExit}></Image>
+          </TouchableOpacity>
+          <Text style={styles.heading}>Atur Password</Text>
+          <View style={styles.row}>
+            <Text style={styles.label}>Password Baru</Text>
+            <TextInput
+              placeholder="Masukkan Password"
+              style={styles.textinput}
+              secureTextEntry={true}
+              onChangeText={password => this.setState({password})}
+            />
+          </View>
+          <View style={styles.row}>
+            <Text style={styles.label}>Konfirmasi Password</Text>
+            <TextInput
+              placeholder="Masukkan Password"
+              secureTextEntry={true}
+              style={styles.textinput}
+              onChangeText={confpassword => this.setState({confpassword})}
+            />
+          </View>
+          <View
+            style={{paddingTop: 20, width: WindowWidth - 40, borderRadius: 10}}>
+            <Button title="Simpan" onPress={this._simpan} />
+          </View>
+        </KeyboardAvoidingView>
+      </ScrollView>
+    );
+  }
+  _simpan = async () => {
+      const {password,confpassword} = this.state;
+      if(password != confpassword){
+          alert("Password berbeda");
+      }
+    // alert(JSON.stringify(this.state))
+  };
 }
 
-export default AturPassword
+export default Login;
 
+const WindowWidth = Dimensions.get('window').width;
+const WindowHeight = Dimensions.get('window').height;
 const styles = StyleSheet.create({
-    container: {
-        backgroundColor: '#138BFE',
-        alignContent: 'center',
-        flex: 1
-    },
-    body:{
-        borderTopRightRadius: 20,
-        borderTopLeftRadius: 20,
-        backgroundColor: 'white',
-        width: '100%',
-        height: '100%',
-        top: '5%'
-    }
-})
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 20,
+  },
+  heading: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#2196f3',
+    marginTop: WindowHeight / 4 - 20,
+    paddingBottom: 20,
+  },
+  row: {
+    marginBottom: 20,
+    justifyContent: 'center',
+  },
+  label: {
+    color: '#696969',
+    fontSize: 16,
+  },
+  textinput: {
+    borderBottomWidth: 1,
+    borderBottomColor: '#2196f3',
+    width: WindowWidth - 40,
+    paddingTop: 5,
+    paddingBottom: 1,
+    fontSize: 14,
+  },
+  highlight: {
+    fontWeight: 'bold',
+  },
+  exit: {
+    alignSelf: 'flex-end',
+   
+  },
+});

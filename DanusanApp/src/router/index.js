@@ -11,7 +11,6 @@ import {
   Profil,
   Splash,
   TambahDanus,
-  UploadGambar,
 } from '../pages';
 import {BottomNavigator} from '../components';
 import Login from '../pages/Login';
@@ -56,11 +55,6 @@ const Router = () => {
       <Stack.Screen
         name="DeskripsiDanus"
         component={DeskripsiDanus}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="Tambah Gambar"
-        component={UploadGambar}
         options={{headerShown: false}}
       />
       <Stack.Screen
