@@ -1,70 +1,111 @@
-import React, {Component} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
+  StyleSheet,
   View,
   Text,
-  StyleSheet,
-  ScrollView,
-  Image,
-  ImageBackground,
   TouchableOpacity,
-  Alert,
-  Dimensions,
+  FlatList,
   TextInput,
+  ImageBackground,
+  Dimensions,
+  Image,
 } from 'react-native';
-import { color } from 'react-native-reanimated';
-import {IkonSearchbar, ImageHeader, noImage} from '../../assets';
+import {IkonSearchbar, ImageHeader} from '../../assets';
 
-class Cari extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {nama_makanan: 'Donat', stok_harian: '1000'};
-  }
+const Cari = ({navigation}) => {
+  const [filterData, setFilterData] = useState([]);
+  const [masterData, setMasterData] = useState([]);
+  const [search, setSearch] = useState('');
 
-  render() {
-    const {nama_makanan, stok_harian} = this.state;
-    const {navigation} = this.props;
+  const fetchPost = () => {
+    const apiUrl = 'http://10.117.90.83/api/API-DanusanApp/API/cari.php';
+    fetch(apiUrl)
+      .then(response => response.json())
+      .then(responseJson => {
+        setFilterData(responseJson);
+        setMasterData(responseJson);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    fetchPost();
+    return () => {};
+  }, []);
+
+  const searchFilter = text => {
+    if (text) {
+      const newData = masterData.filter(item => {
+        const itemData = item.nama_makanan
+          ? item.nama_makanan.toUpperCase()
+          : ''.toUpperCase();
+        const textData = text.toUpperCase();
+        return itemData.indexOf(textData) > -1;
+      });
+      setFilterData(newData);
+      setSearch(text);
+    } else {
+      setFilterData(masterData);
+      setSearch(text);
+    }
+  };
+  const ItemView = ({item}) => {
     return (
-      <View style={styles.container}>
-        <ImageBackground
-          source={ImageHeader}
-          style={styles.header}></ImageBackground>
-        <View style={styles.body}>
-          <View style={{position: 'relative'}}>
-            <TextInput placeholder="Cari danusan..." style={styles.textinput} />
-            <Image source={IkonSearchbar} style={styles.search} />
-            <Text style={styles.cari}>Cari</Text>
-          </View>
-          <View>
-            <ScrollView>
-              <View style={styles.danus}>
-                <TouchableOpacity
-                  style={styles.jenisdanus}
-                  onPress={() => navigation.navigate('DeskripsiDanus')}>
-                  <Image source={noImage} style={styles.noImage}></Image>
-                  <View>
-                    <Text style={styles.namamakanan}>{nama_makanan}</Text>
-                    <Text style={styles.biji}>{stok_harian} biji/hari</Text>
-                  </View>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={styles.jenisdanus}
-                  onPress={() => navigation.navigate('DeskripsiDanus')}>
-                  <Image source={noImage} style={styles.noImage}></Image>
-                  <View>
-                    <Text style={styles.namamakanan}>{nama_makanan}</Text>
-                    <Text style={styles.biji}>{stok_harian} biji/hari</Text>
-                  </View>
-                </TouchableOpacity>
-              </View>
-            </ScrollView>
-          </View>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate('DeskripsiDanus', {
+            nama_makanan: item.nama_makanan,
+            foto_makanan: item.foto_makanan,
+            deksripsi_makanan: item.deksripsi_makanan,
+            nama_lengkap: item.nama_lengkap,
+            stok_harian: item.stok_harian,
+            alamat: item.alamat,
+            no_telp: item.no_telp,
+            harga_satuan: item.harga_satuan,
+            id_makanan: item.id_makanan,
+          });
+        }}>
+        <Text style={styles.itemStyle}>{item.nama_makanan.toUpperCase()}</Text>
+      </TouchableOpacity>
+    );
+  };
+
+  const ItemSeparatorView = () => {
+    return (
+      <View style={{height: 0.5, width: '100%', backgroundColor: '$138BFE'}} />
+    );
+  };
+
+  return (
+    <View style={styles.container}>
+      <ImageBackground source={ImageHeader} style={styles.header} />
+      <View style={styles.body}>
+        <View style={{position: 'relative', marginTop: 10}}>
+          <TextInput
+            style={styles.textInputStyle}
+            value={search}
+            placeholder="Cari Danusan..."
+            underlineColorAndroid="transparent"
+            onChangeText={text => searchFilter(text)}
+          />
+          <Image source={IkonSearchbar} style={styles.search} />
+
+          <FlatList
+            data={filterData}
+            keyExtractor={(Item, index) => index.toString()}
+            ItemSeparatorComponent={ItemSeparatorView}
+            renderItem={ItemView}
+          />
         </View>
       </View>
-    );
-  }
-}
+    </View>
+  );
+};
 
 export default Cari;
+
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
@@ -73,6 +114,23 @@ const styles = StyleSheet.create({
     backgroundColor: '#138BFE',
     flex: 1,
     alignItems: 'center',
+  },
+  itemStyle: {
+    paddingLeft: 20,
+    paddingVertical: 15,
+    borderBottomWidth: 1,
+    borderColor: '#dedede',
+    fontSize: 14
+  },
+  textInputStyle: {
+    backgroundColor: '#f3f3f3',
+    borderRadius: 20,
+    width: windowWidth - 40,
+    height: 40,
+    marginVertical: 10,
+    marginHorizontal: 20,
+    paddingLeft: 40,
+    paddingVertical: 0,
   },
   header: {
     width: 161,
@@ -89,73 +147,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     paddingBottom: 120,
   },
-  textinput: {
-    backgroundColor: '#dedede',
-    borderRadius: 20,
-    width: windowWidth - 70,
-    height: 30,
-    marginVertical: 10,
-    marginHorizontal: 15,
-    paddingLeft: 35,
-    paddingVertical: 0,
-  },
   search: {
     position: 'absolute',
-    marginVertical: 15,
-    left: 25,
-  },
-  cari: {
-    position: 'absolute',
-    marginVertical: 11,
-    marginHorizontal:5,
-    alignSelf: 'flex-end',
-    right: 10,
-    paddingHorizontal: 7,
-    paddingVertical:4,
-    borderRadius: 5,
-    color: '#696969',
-    fontWeight: 'bold'
-  },
-  danus: {
-    paddingHorizontal: 20,
-    justifyContent: 'center',
-    alignContent: 'center',
-  },
-  jenisdanus: {
-    width: windowWidth - 40,
-    height: 100,
-    borderRadius: 15,
-    borderColor: '#DCDCDC',
-    borderWidth: 1,
-    marginTop: 15,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-  },
-  noImage: {
-    marginVertical: 15,
-    marginLeft: 10,
-    width: 70,
-    height: 70,
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: '#dedede',
-  },
-  namamakanan: {
-    fontWeight: 'bold',
-    fontSize: 16,
-    color: '#138BFE',
-    paddingTop: 15,
-    paddingLeft: 25,
-  },
-  biji: {
-    fontSize: 12,
-    color: 'black',
-    paddingTop: 5,
-    paddingLeft: 25,
-  },
-  tambah: {
-    bottom: 65,
-    right: 10,
-    paddingLeft: windowWidth - 60,
+    margin: 20,
+    left: 10,
   },
 });

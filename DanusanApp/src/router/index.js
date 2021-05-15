@@ -21,7 +21,7 @@ const Tab = createBottomTabNavigator();
 
 const DanusTera = ({route}) => {
   const username = route.params.username;
-  console.log('Ditangkap di danustera', username);
+  // console.log('Ditangkap di danustera', username);
   return (
     <UsernameContext.Provider value={username}>
       <Tab.Navigator tabBar={props => <BottomNavigator {...props} />}>

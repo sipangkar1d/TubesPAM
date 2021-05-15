@@ -10,6 +10,7 @@ import {
   Dimensions,
   TouchableOpacity,
   Image,
+  Alert,
 } from 'react-native';
 import Loading from 'react-native-whc-loading';
 import {IkonExit} from '../../assets';
@@ -24,7 +25,8 @@ class Login extends Component {
   }
 
   render() {
-    const {navigation} = this.props;
+    const {navigation, route} = this.props;
+    // console.log(username);
     return (
       <ScrollView>
         <KeyboardAvoidingView style={styles.container} enabled>
@@ -61,10 +63,39 @@ class Login extends Component {
     );
   }
   _simpan = async () => {
-      const {password,confpassword} = this.state;
-      if(password != confpassword){
-          alert("Password berbeda");
-      }
+    const {password, confpassword} = this.state;
+    const {route} = this.props;
+    var username = route.params.username;
+    console.log('username', username);
+    if (password != confpassword) {
+      alert('Password berbeda');
+    } else {
+      fetch('http://10.117.90.83/api/API-DanusanApp/API/AturPassword.php', {
+        method: 'POST',
+        header: {
+          Accept: 'application/json',
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: username,
+          password: password,
+        }),
+      })
+        .then(response => response.json())
+        .then(responseJson => {
+          if (responseJson == 'Berhasil') {
+            Alert.alert('', 'Password berhasil dirubah', [
+              {
+                text: 'OK',
+                onPress: () => this.props.navigation.navigate('DanusTera'),
+              },
+            ]);
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
     // alert(JSON.stringify(this.state))
   };
 }
@@ -108,6 +139,5 @@ const styles = StyleSheet.create({
   },
   exit: {
     alignSelf: 'flex-end',
-   
   },
 });

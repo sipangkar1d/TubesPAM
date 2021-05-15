@@ -58,7 +58,7 @@ class Login extends Component {
         </KeyboardAvoidingView>
       </ScrollView>
     );
-  } 
+  }
   _login = async () => {
     const {username, password} = this.state;
 
@@ -79,9 +79,8 @@ class Login extends Component {
         .then(responseJson => {
           if (responseJson == 'ok') {
             // redirect to Beranda page
-            console.log('dikirim dari login ' + username);
             this.props.navigation.navigate('DanusTera', {
-              'username': username,
+              username: username,
             });
           } else {
             alert(JSON.stringify(responseJson));

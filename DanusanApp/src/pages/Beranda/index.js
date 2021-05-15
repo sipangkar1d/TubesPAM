@@ -1,12 +1,10 @@
-import React, {useContext, useEffect} from 'react';
-import {useState} from 'react';
+import React, {useContext, useEffect,useState} from 'react';
 import {
   StyleSheet,
   Text,
   View,
   FlatList,
   Image,
-  ScrollView,
   ImageBackground,
   Dimensions,
   TouchableOpacity,
@@ -28,11 +26,9 @@ const Beranda = ({navigation}) => {
     }
   };
   var user = useContext(UsernameContext);
-  // console.log('sampai di beranda', user);
 
   useEffect(() => {
     getDataFromApiAsync();
-    renderItem;
   }, []);
 
   const renderItem = ({item}) => {

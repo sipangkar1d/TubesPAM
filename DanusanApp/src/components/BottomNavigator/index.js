@@ -23,7 +23,7 @@ const BottomNavigator = ({state, descriptors, navigation}) => {
             : route.name;
 
         const isFocused = state.index === index;
-        console.log('Sampai di bottom navigator', user);
+        // console.log('Sampai di bottom navigator', user);
         const onPress = () => {
           const event = navigation.emit({
             type: 'tabPress',

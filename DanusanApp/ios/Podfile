@@ -18,6 +18,8 @@ target 'DanusanApp' do
 
   pod 'RNImageCropPicker', :path => '../node_modules/react-native-image-crop-picker'
 
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
   target 'DanusanAppTests' do
     inherit! :complete
     # Pods for testing

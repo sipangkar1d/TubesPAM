@@ -8,7 +8,7 @@ import {
   Dimensions,
   Alert,
 } from 'react-native';
-import {IkonExit, TombolHapus} from '../../assets';
+import {IkonExit} from '../../assets';
 
 class DeskripsiDanus extends Component {
   render() {
@@ -22,7 +22,12 @@ class DeskripsiDanus extends Component {
     var no_telp = route.params.no_telp;
     var harga_satuan = route.params.harga_satuan;
     var stok_harian = route.params.stok_harian;
-    var gambar = route.params.foto_makanan;
+    var gambar;
+    if (route.params.foto_makanan != '') {
+      gambar = route.params.foto_makanan;
+    } else {
+      gambar = '../../assets/images/noImage.png';
+    }
 
     return (
       <View style={styles.container}>
@@ -45,7 +50,7 @@ class DeskripsiDanus extends Component {
           <Image
             style={styles.img}
             source={{
-              uri: gambar
+              uri: gambar,
             }}
           />
           <View style={{flexDirection: 'row'}}>
@@ -67,7 +72,6 @@ class DeskripsiDanus extends Component {
               <Text style={styles.teks}>: {stok_harian} /hari</Text>
             </View>
           </View>
-          
         </View>
       </View>
     );
