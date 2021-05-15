@@ -58,9 +58,7 @@ const Beranda = ({navigation}) => {
             <Image
               style={styles.gambar}
               source={{
-                uri:
-                  'http://10.117.90.83/api/API-DanusanApp/API/' +
-                  item.foto_makanan,
+                uri: item.foto_makanan,
               }}
             />
             <Text style={styles.nama}>{item.nama_makanan}</Text>
