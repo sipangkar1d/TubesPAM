@@ -101,8 +101,8 @@ const Cari = ({navigation}) => {
             keyExtractor={(Item, index) => index.toString()}
             ItemSeparatorComponent={ItemSeparatorView}
             renderItem={ItemView}
-            refreshing = {isLoading}
-            onRefresh = {fetchPost}
+            refreshing={isLoading}
+            onRefresh={fetchPost}
           />
         </View>
       </View>

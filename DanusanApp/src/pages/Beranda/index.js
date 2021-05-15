@@ -9,7 +9,7 @@ import {
   Dimensions,
   TouchableOpacity,
 } from 'react-native';
-import {ImageHeader, TombolTambah, Refresh} from '../../assets';
+import {ImageHeader, TombolTambah, Refresh, About} from '../../assets';
 import {UsernameContext} from '../../components';
 
 const Beranda = ({navigation}) => {
@@ -30,8 +30,9 @@ const Beranda = ({navigation}) => {
     }
     isLoading = false;
   };
+
   var user = useContext(UsernameContext);
-  
+
   useEffect(() => {
     getDataFromApiAsync();
   }, []);

@@ -3,6 +3,7 @@ import {StyleSheet} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {
+  About,
   AturPassword,
   Beranda,
   Cari,
@@ -11,7 +12,6 @@ import {
   Profil,
   Splash,
   TambahDanus,
-  
 } from '../pages';
 import {BottomNavigator, UsernameContext} from '../components';
 import Login from '../pages/Login';
@@ -81,6 +81,11 @@ const Router = () => {
       <Stack.Screen
         name="Login"
         component={Login}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="About"
+        component={About}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

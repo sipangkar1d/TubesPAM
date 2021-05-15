@@ -44,7 +44,7 @@ class TambahDanus extends Component {
       ? {uri: this.state.avatatarSrc.path}
       : require('../../assets/images/noImage.png');
     const user = route.params.username;
-    this.state.formData.username = user
+    this.state.formData.username = user;
     console.log('ditangkap di tambah danus', this.state.formData.username);
     return (
       <ScrollView>
@@ -203,7 +203,6 @@ class TambahDanus extends Component {
             }, 1000);
           } else {
             alert(responseJson);
-           
           }
         })
         .catch(error => {
@@ -233,6 +232,15 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
     alignItems: 'center',
+  },
+  exit: {
+    width: 25,
+    height: 25,
+    borderWidth: 1,
+    borderColor: 'white',
+    alignSelf: 'flex-end',
+    right: 10,
+    top: 10,
   },
   headertext: {
     fontSize: 16,
@@ -272,15 +280,7 @@ const styles = StyleSheet.create({
   gambar: {
     paddingVertical: 10,
   },
-  exit: {
-    width: 25,
-    height: 25,
-    borderWidth: 1,
-    borderColor: 'white',
-    alignSelf: 'flex-end',
-    right: 10,
-    top: 10,
-  },
+
   buttonexit: {
     right: 3,
     bottom: 3,

@@ -69,6 +69,8 @@ class Login extends Component {
     console.log('username', username);
     if (password != confpassword) {
       alert('Password berbeda');
+    } else if (password == '') {
+      alert('Isi password baru');
     } else {
       fetch('http://10.117.90.83/api/API-DanusanApp/API/AturPassword.php', {
         method: 'POST',
@@ -96,7 +98,6 @@ class Login extends Component {
           console.log(error);
         });
     }
-    // alert(JSON.stringify(this.state))
   };
 }
 
