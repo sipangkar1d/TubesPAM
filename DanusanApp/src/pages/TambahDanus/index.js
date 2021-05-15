@@ -31,7 +31,8 @@ class TambahDanus extends Component {
   }
 
   render() {
-    const {navigation} = this.props;
+    const {navigation, route} = this.props;
+
     const {
       nama_makanan,
       deskripsi_makanan,
@@ -42,30 +43,20 @@ class TambahDanus extends Component {
     const sourceUri = this.state.avatatarSrc.path
       ? {uri: this.state.avatatarSrc.path}
       : require('../../assets/images/noImage.png');
+    const user = route.params.username;
+    this.state.formData.username = user
+    console.log('ditangkap di tambah danus', this.state.formData.username);
     return (
       <ScrollView>
         <View style={styles.container}>
           <View style={styles.body}>
+            <Text style={styles.headertext}>Tambahkan Supply DanusTera</Text>
             <TouchableOpacity
               style={styles.exit}
               onPress={() => navigation.navigate('DanusTera')}>
-              <Image source={IkonExit}></Image>
+              <Image source={IkonExit} style={styles.buttonexit}></Image>
             </TouchableOpacity>
-            <Text style={styles.headertext}>Tambahkan Supply DanusTera</Text>
             <View style={styles.row}>
-              <TextInput
-                placeholder="Username"
-                style={styles.form}
-                onChangeText={username =>
-                  this.setState(prevState => ({
-                    formData: {
-                      ...prevState.formData,
-                      username,
-                    },
-                  }))
-                }
-                value={username}
-              />
               <TextInput
                 placeholder="Nama Makanan"
                 style={styles.form}
@@ -134,6 +125,7 @@ class TambahDanus extends Component {
                 <Text style={styles.tambahgambar}>Pilih Gambar</Text>
               </TouchableOpacity>
             </View>
+
             <TouchableOpacity style={styles.button}>
               <Button
                 style={styles.tambah}
@@ -211,11 +203,7 @@ class TambahDanus extends Component {
             }, 1000);
           } else {
             alert(responseJson);
-            // Alert.alert('', responseJson, [
-            //   {
-            //     text: 'OK',
-            //   },
-            // ]);
+           
           }
         })
         .catch(error => {
@@ -285,8 +273,16 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   exit: {
+    width: 25,
+    height: 25,
+    borderWidth: 1,
+    borderColor: 'white',
     alignSelf: 'flex-end',
     right: 10,
     top: 10,
+  },
+  buttonexit: {
+    right: 3,
+    bottom: 3,
   },
 });

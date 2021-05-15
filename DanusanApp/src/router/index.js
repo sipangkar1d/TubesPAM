@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {
@@ -11,20 +11,25 @@ import {
   Profil,
   Splash,
   TambahDanus,
+  
 } from '../pages';
-import {BottomNavigator} from '../components';
+import {BottomNavigator, UsernameContext} from '../components';
 import Login from '../pages/Login';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-const DanusTera = () => {
+const DanusTera = ({route}) => {
+  const username = route.params.username;
+  console.log('Ditangkap di danustera', username);
   return (
-    <Tab.Navigator tabBar={props => <BottomNavigator {...props} />}>
-      <Tab.Screen name="Beranda" component={Beranda} />
-      <Tab.Screen name="Cari" component={Cari} />
-      <Tab.Screen name="Profil" component={Profil} />
-    </Tab.Navigator>
+    <UsernameContext.Provider value={username}>
+      <Tab.Navigator tabBar={props => <BottomNavigator {...props} />}>
+        <Tab.Screen name="Beranda" component={Beranda} />
+        <Tab.Screen name="Cari" component={Cari} />
+        <Tab.Screen name="Profil" component={Profil} />
+      </Tab.Navigator>
+    </UsernameContext.Provider>
   );
 };
 
@@ -34,6 +39,11 @@ const Router = () => {
       <Stack.Screen
         name="Splash"
         component={Splash}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Profil"
+        component={Profil}
         options={{headerShown: false}}
       />
       <Stack.Screen

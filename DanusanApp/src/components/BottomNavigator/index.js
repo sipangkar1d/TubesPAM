@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {StyleSheet, View} from 'react-native';
+import {UsernameContext} from '..';
 import TabItem from '../TabItem';
 
 const BottomNavigator = ({state, descriptors, navigation}) => {
@@ -9,6 +10,7 @@ const BottomNavigator = ({state, descriptors, navigation}) => {
     return null;
   }
 
+  var user = useContext(UsernameContext);
   return (
     <View style={styles.container}>
       {state.routes.map((route, index) => {
@@ -21,7 +23,7 @@ const BottomNavigator = ({state, descriptors, navigation}) => {
             : route.name;
 
         const isFocused = state.index === index;
-
+        console.log('Sampai di bottom navigator', user);
         const onPress = () => {
           const event = navigation.emit({
             type: 'tabPress',
@@ -30,7 +32,9 @@ const BottomNavigator = ({state, descriptors, navigation}) => {
           });
 
           if (!isFocused && !event.defaultPrevented) {
-            navigation.navigate(route.name);
+            navigation.navigate(route.name, {
+              'username': user,
+            });
           }
         };
 

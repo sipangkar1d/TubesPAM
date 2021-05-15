@@ -56,21 +56,16 @@ class Login extends Component {
             </Text>
           </Text>
         </KeyboardAvoidingView>
-        <Loading ref="loading" />
       </ScrollView>
     );
-  }
+  } 
   _login = async () => {
-    this.refs.loading.show();
-
     const {username, password} = this.state;
 
     if (username == '') {
       alert('Username masih kosong');
-      this.refs.loading.show(false);
     } else if (password == '') {
       alert('Password masih kosong');
-      this.refs.loading.show(false);
     } else {
       fetch('http://10.117.90.83/api/API-DanusanApp/API/Login.php', {
         method: 'POST',
@@ -84,16 +79,16 @@ class Login extends Component {
         .then(responseJson => {
           if (responseJson == 'ok') {
             // redirect to Beranda page
-            this.refs.loading.show(false);
-            this.props.navigation.navigate('Beranda');
+            console.log('dikirim dari login ' + username);
+            this.props.navigation.navigate('DanusTera', {
+              'username': username,
+            });
           } else {
-            this.refs.loading.show(false);
             alert(JSON.stringify(responseJson));
           }
         })
-        .catch(err => {
-          this.refs.loading.show(false);
-          console.error(err);
+        .catch(error => {
+          console.log(error);
         });
     }
   };

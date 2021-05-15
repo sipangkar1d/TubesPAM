@@ -1,98 +1,101 @@
-import React, {Component} from 'react';
+import React, {useContext, useEffect} from 'react';
+import {useState} from 'react';
 import {
-  View,
-  Text,
   StyleSheet,
-  ScrollView,
+  Text,
+  View,
+  FlatList,
   Image,
+  ScrollView,
   ImageBackground,
-  TouchableOpacity,
-  Alert,
   Dimensions,
+  TouchableOpacity,
 } from 'react-native';
-import {ImageHeader, noImage, TombolTambah} from '../../assets';
+import {ImageHeader, TombolTambah} from '../../assets';
+import {UsernameContext} from '../../components';
 
-class Beranda extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {nama_makanan: 'Donat', stok_harian: '1000'};
-  }
+const Beranda = ({navigation}) => {
+  const [data, setData] = useState([]);
+  const getDataFromApiAsync = async () => {
+    try {
+      let response = await fetch(
+        'http://10.117.90.83/api/API-DanusanApp/API/tampil.php',
+      );
+      let json = await response.json();
+      setData(json.result);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  var user = useContext(UsernameContext);
+  // console.log('sampai di beranda', user);
 
-  render() {
-    const {nama_makanan, stok_harian} = this.state;
-    const {navigation} = this.props;
+  useEffect(() => {
+    getDataFromApiAsync();
+    renderItem;
+  }, []);
+
+  const renderItem = ({item}) => {
     return (
-      <View style={styles.container}>
-        <ImageBackground
-          source={ImageHeader}
-          style={styles.header}></ImageBackground>
-        <View style={styles.body}>
-          <ScrollView>
-            <View>
-              <Text style={styles.teksheader}>
-                Supplier Danus disekitar ITERA
-              </Text>
-            </View>
-            <View style={styles.danus}>
-              <TouchableOpacity
-                style={styles.jenisdanus}
-                onPress={() => navigation.navigate('DeskripsiDanus')}>
-                <Image
-                  source={noImage}
-                  style={styles.noImage}></Image>
-                <View>
-                  <Text style={styles.namamakanan}>{nama_makanan}</Text>
-                  <Text style={styles.biji}>{stok_harian} biji/hari</Text>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.jenisdanus}
-                onPress={() => navigation.navigate('DeskripsiDanus')}>
-                <Image
-                  source={noImage}
-                  style={styles.noImage}></Image>
-                <View>
-                  <Text style={styles.namamakanan}>{nama_makanan}</Text>
-                  <Text style={styles.biji}>{stok_harian} biji/hari</Text>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.jenisdanus}
-                onPress={() => navigation.navigate('DeskripsiDanus')}>
-                <Image
-                  source={noImage}
-                  style={styles.noImage}></Image>
-                <View>
-                  <Text style={styles.namamakanan}>{nama_makanan}</Text>
-                  <Text style={styles.biji}>{stok_harian} biji/hari</Text>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.jenisdanus}
-                onPress={() => navigation.navigate('DeskripsiDanus')}>
-                <Image
-                  source={noImage}
-                  style={styles.noImage}></Image>
-                <View>
-                  <Text style={styles.namamakanan}>{nama_makanan}</Text>
-                  <Text style={styles.biji}>{stok_harian} biji/hari</Text>
-                </View>
-              </TouchableOpacity>
-            </View>
-          </ScrollView>
-          <View style={styles.tambah}>
-            <TouchableOpacity
-              onPress={() => navigation.navigate('TambahDanus')}>
-              <Image source={TombolTambah}></Image>
-            </TouchableOpacity>
+      <View style={styles.danus}>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('DeskripsiDanus', {
+              nama_makanan: item.nama_makanan,
+              foto_makanan: item.foto_makanan,
+              deksripsi_makanan: item.deksripsi_makanan,
+              nama_lengkap: item.nama_lengkap,
+              stok_harian: item.stok_harian,
+              alamat: item.alamat,
+              no_telp: item.no_telp,
+              harga_satuan: item.harga_satuan,
+              id_makanan: item.id_makanan,
+            });
+          }}>
+          <View style={styles.jenisdanus}>
+            <Image
+              style={styles.gambar}
+              source={{
+                uri:
+                  'http://10.117.90.83/api/API-DanusanApp/API/' +
+                  item.foto_makanan,
+              }}
+            />
+            <Text style={styles.nama}>{item.nama_makanan}</Text>
+            <Text style={styles.harga}>Rp. {item.harga_satuan},-</Text>
+            <Text style={styles.np}>{item.nama_lengkap},-</Text>
           </View>
-        </View>
+        </TouchableOpacity>
       </View>
     );
-  }
-}
+  };
+  return (
+    <View style={styles.container}>
+      <ImageBackground source={ImageHeader} style={styles.imgheader} />
+      <View style={styles.body}>
+        <Text style={styles.header}>Supplier Danus disekitar ITERA</Text>
+        <FlatList
+          data={data}
+          renderItem={renderItem}
+          keyExtractor={item => item.id_makanan}
+        />
+        <View style={styles.tambah}>
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate('TambahDanus', {
+                username: user,
+              })
+            }>
+            <Image source={TombolTambah}></Image>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </View>
+  );
+};
 
 export default Beranda;
+
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
@@ -102,7 +105,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
   },
-  header: {
+  imgheader: {
     width: 161,
     height: 40,
     marginTop: 15,
@@ -110,14 +113,13 @@ const styles = StyleSheet.create({
   },
   body: {
     width: windowWidth + 2,
-    height: windowHeight + 19,
     borderRadius: 20,
     borderColor: '#138BFE',
     borderWidth: 1,
     backgroundColor: 'white',
     paddingBottom: 120,
   },
-  teksheader: {
+  header: {
     paddingLeft: 20,
     paddingTop: 15,
     color: '#696969',
@@ -138,7 +140,32 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
   },
-  noImage: {
+  nama: {
+    fontWeight: 'bold',
+    fontSize: 16,
+    color: '#138BFE',
+    paddingTop: 15,
+    paddingLeft: 25,
+  },
+  np: {
+    fontSize: 12,
+    color: 'black',
+    alignSelf: 'flex-start',
+    position: 'absolute',
+    marginLeft: 105,
+    marginTop: 40,
+    fontWeight: 'bold',
+  },
+  harga: {
+    fontSize: 12,
+    color: 'black',
+    alignSelf: 'flex-start',
+    position: 'absolute',
+    marginLeft: 105,
+    marginTop: 60,
+    fontWeight: 'bold',
+  },
+  gambar: {
     marginVertical: 15,
     marginLeft: 10,
     width: 70,
@@ -147,22 +174,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#dedede',
   },
-  namamakanan: {
-    fontWeight: 'bold',
-    fontSize: 16,
-    color: '#138BFE',
-    paddingTop: 15,
-    paddingLeft: 25,
-  },
-  biji: {
-    fontSize: 12,
-    color: 'black',
-    paddingTop: 5,
-    paddingLeft: 25,
-  },
   tambah: {
     bottom: 65,
     right: 10,
     paddingLeft: windowWidth - 60,
-  }
+  },
 });

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -11,49 +11,49 @@ import {
 import {IkonExit, TombolHapus} from '../../assets';
 
 class DeskripsiDanus extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      nama_penjual: 'Daniel Sipangkar',
-      nama_makanan: 'Bakwan Jagung',
-      deksripsi_makanan: 'Gorengan renyah murah dan berkualitas',
-      alamat: 'Jl. yang dulu kita kenang',
-      no_telp: '087812345678',
-      harga_satuan: '800',
-      stok_harian: '1000',
-      gambar: '',
-    };
-  }
-
   render() {
-    const {navigation} = this.props;
-    const {
-      nama_penjual,
-      nama_makanan,
-      deksripsi_makanan,
-      alamat,
-      no_telp,
-      harga_satuan,
-      stok_harian,
-      gambar,
-    } = this.state;
+    const {navigation, route} = this.props;
+    // var nm = route.params.nama_makanan;
+    // console.log('nama makanan:', nm);
+    var nama_penjual = route.params.nama_lengkap;
+    var nama_makanan = route.params.nama_makanan;
+    var deksripsi_makanan = route.params.deksripsi_makanan;
+    var alamat = route.params.alamat;
+    var no_telp = route.params.no_telp;
+    var harga_satuan = route.params.harga_satuan;
+    var stok_harian = route.params.stok_harian;
+    var gambar = route.params.foto_makanan;
+
     return (
       <View style={styles.container}>
         <View style={styles.body}>
-          <Text style={styles.heading}>Nama Makanan</Text>
+          <Text style={styles.heading}>{nama_makanan}</Text>
           <TouchableOpacity
-            style={{alignSelf: 'baseline', left: windowWidth - 40, bottom: 60}}
-            onPress={() => navigation.navigate('DanusTera')}>
-            <Image source={IkonExit} style={styles.exit}></Image>
+            onPress={() => navigation.navigate('DanusTera')}
+            style={{
+              alignSelf: 'flex-end',
+              borderWidth: 1,
+              width: 25,
+              height: 25,
+              justifyContent: 'center',
+              right: 10,
+              bottom: 40,
+              borderColor: 'white',
+            }}>
+            <Image source={IkonExit} style={{}}></Image>
           </TouchableOpacity>
-          <Text style={styles.img}>{gambar}</Text>
+          <Image
+            style={styles.img}
+            source={{
+              uri: gambar
+            }}
+          />
           <View style={{flexDirection: 'row'}}>
             <Text style={styles.desk}>{deksripsi_makanan}</Text>
           </View>
           <View style={styles.form}>
             <View style={styles.kiri}>
               <Text style={styles.teks}>Nama Penjual</Text>
-              <Text style={styles.teks}>Nama Makanan</Text>
               <Text style={styles.teks}>Alamat Penjual</Text>
               <Text style={styles.teks}>No. Telepon</Text>
               <Text style={styles.teks}>Harga Satuan</Text>
@@ -61,27 +61,13 @@ class DeskripsiDanus extends Component {
             </View>
             <View style={styles.kanan}>
               <Text style={styles.teks}>: {nama_penjual}</Text>
-              <Text style={styles.teks}>: {nama_makanan}</Text>
               <Text style={styles.teks}>: {alamat}</Text>
               <Text style={styles.teks}>: {no_telp}</Text>
               <Text style={styles.teks}>: Rp. {harga_satuan}</Text>
               <Text style={styles.teks}>: {stok_harian} /hari</Text>
             </View>
           </View>
-          <TouchableOpacity
-            onPress={() => {
-              Alert.alert('', 'Hapus?', [
-                {
-                  text: 'Batal',
-                },
-                {
-                  text: 'Hapus',
-                  onPress: () => navigation.navigate('DanusTera'),
-                },
-              ]);
-            }}>
-            <Image source={TombolHapus} style={styles.hapus} />
-          </TouchableOpacity>
+          
         </View>
       </View>
     );
