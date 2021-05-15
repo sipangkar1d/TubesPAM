@@ -1,4 +1,4 @@
-import React, {useContext, useEffect,useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -9,24 +9,29 @@ import {
   Dimensions,
   TouchableOpacity,
 } from 'react-native';
-import {ImageHeader, TombolTambah} from '../../assets';
+import {ImageHeader, TombolTambah, Refresh} from '../../assets';
 import {UsernameContext} from '../../components';
 
 const Beranda = ({navigation}) => {
   const [data, setData] = useState([]);
+
+  var isLoading = false;
+
   const getDataFromApiAsync = async () => {
     try {
       let response = await fetch(
         'http://10.117.90.83/api/API-DanusanApp/API/tampil.php',
       );
+      isLoading = true;
       let json = await response.json();
       setData(json.result);
     } catch (error) {
       console.error(error);
     }
+    isLoading = false;
   };
   var user = useContext(UsernameContext);
-
+  
   useEffect(() => {
     getDataFromApiAsync();
   }, []);
@@ -70,10 +75,13 @@ const Beranda = ({navigation}) => {
       <ImageBackground source={ImageHeader} style={styles.imgheader} />
       <View style={styles.body}>
         <Text style={styles.header}>Supplier Danus disekitar ITERA</Text>
+
         <FlatList
           data={data}
           renderItem={renderItem}
           keyExtractor={item => item.id_makanan}
+          refreshing={isLoading}
+          onRefresh={getDataFromApiAsync}
         />
         <View style={styles.tambah}>
           <TouchableOpacity
@@ -120,6 +128,11 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     color: '#696969',
     fontWeight: 'bold',
+    marginBottom: 15,
+  },
+  refresh: {
+    width: 25,
+    height: 25,
   },
   danus: {
     paddingHorizontal: 20,
@@ -132,7 +145,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     borderColor: '#DCDCDC',
     borderWidth: 1,
-    marginTop: 15,
+    marginBottom: 15,
     flexDirection: 'row',
     flexWrap: 'wrap',
   },

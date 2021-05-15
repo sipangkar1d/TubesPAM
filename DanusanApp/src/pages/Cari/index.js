@@ -17,8 +17,11 @@ const Cari = ({navigation}) => {
   const [masterData, setMasterData] = useState([]);
   const [search, setSearch] = useState('');
 
+  var isLoading = false;
+
   const fetchPost = () => {
     const apiUrl = 'http://10.117.90.83/api/API-DanusanApp/API/cari.php';
+    isLoading = true;
     fetch(apiUrl)
       .then(response => response.json())
       .then(responseJson => {
@@ -28,6 +31,7 @@ const Cari = ({navigation}) => {
       .catch(error => {
         console.log(error);
       });
+    isLoading = false;
   };
 
   useEffect(() => {
@@ -97,6 +101,8 @@ const Cari = ({navigation}) => {
             keyExtractor={(Item, index) => index.toString()}
             ItemSeparatorComponent={ItemSeparatorView}
             renderItem={ItemView}
+            refreshing = {isLoading}
+            onRefresh = {fetchPost}
           />
         </View>
       </View>
@@ -120,7 +126,7 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     borderBottomWidth: 1,
     borderColor: '#dedede',
-    fontSize: 14
+    fontSize: 14,
   },
   textInputStyle: {
     backgroundColor: '#f3f3f3',

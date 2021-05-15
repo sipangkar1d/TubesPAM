@@ -9,6 +9,7 @@ import DanusTeraLogo from './DanusTeraLogo.png';
 import Tambah from './Tambah.png';
 import TombolHapus from './TombolHapus.png';
 import noImage from './noImage.png';
+import Refresh from './refresh.png';
 
 export {
   Logo,
@@ -22,4 +23,5 @@ export {
   DanusTeraLogo,
   Tambah,
   TombolHapus,
+  Refresh,
 };
