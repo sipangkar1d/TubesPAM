@@ -86,7 +86,7 @@ const Cari = ({navigation}) => {
     <View style={styles.container}>
       <ImageBackground source={ImageHeader} style={styles.header} />
       <View style={styles.body}>
-        <View style={{position: 'relative', marginTop: 10}}>
+        <View style={{position: 'relative', marginTop: 10, height: windowHeight-windowHeight/5}}>
           <TextInput
             style={styles.textInputStyle}
             value={search}
