@@ -21,7 +21,7 @@ const Profil = ({navigation}) => {
   const getDataFromApiAsync = async () => {
     try {
       let response = await fetch(
-        'http://10.117.91.46/api/API-DanusanApp/API/profil.php',
+        'https://danustera.000webhostapp.com/profil.php',
         {
           method: 'POST',
           header: {

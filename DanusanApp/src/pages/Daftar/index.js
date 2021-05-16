@@ -212,7 +212,7 @@ class Daftar extends Component {
       this.refs.loading.show(false);
     } else {
       this.refs.loading.show();
-      fetch('http://10.117.91.46/api/API-DanusanApp/API/buatAkun.php', {
+      fetch('https://danustera.000webhostapp.com/buatAkun.php', {
         method: 'POST',
         headers: {
           Accept: 'application/json',

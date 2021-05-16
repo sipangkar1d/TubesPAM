@@ -20,7 +20,7 @@ const Cari = ({navigation}) => {
   var isLoading = false;
 
   const fetchPost = () => {
-    const apiUrl = 'http://10.117.91.46/api/API-DanusanApp/API/cari.php';
+    const apiUrl = 'https://danustera.000webhostapp.com/cari.php';
     isLoading = true;
     fetch(apiUrl)
       .then(response => response.json())
