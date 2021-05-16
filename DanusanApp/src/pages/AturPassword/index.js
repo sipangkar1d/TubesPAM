@@ -72,7 +72,7 @@ class Login extends Component {
     } else if (password == '') {
       alert('Isi password baru');
     } else {
-      fetch('http://10.117.90.83/api/API-DanusanApp/API/AturPassword.php', {
+      fetch('http://10.117.91.46/api/API-DanusanApp/API/AturPassword.php', {
         method: 'POST',
         header: {
           Accept: 'application/json',

@@ -67,7 +67,7 @@ class Login extends Component {
     } else if (password == '') {
       alert('Password masih kosong');
     } else {
-      fetch('http://10.117.90.83/api/API-DanusanApp/API/Login.php', {
+      fetch('http://10.117.91.46/api/API-DanusanApp/API/Login.php', {
         method: 'POST',
         header: {
           Accept: 'application/json',
