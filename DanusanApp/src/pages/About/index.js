@@ -7,6 +7,7 @@ import {
   Image,
   Dimensions,
 } from 'react-native';
+
 import {IkonExit} from '../../assets';
 
 const About = ({navigation}) => {
@@ -94,4 +95,5 @@ const styles = StyleSheet.create({
     fontSize: 13,
     marginTop: 15,
   },
+  
 });
