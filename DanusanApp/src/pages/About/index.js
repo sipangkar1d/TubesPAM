@@ -29,13 +29,13 @@ const About = ({navigation}) => {
               Pembuatan aplikasi ini dilakukan oleh 4 orang, yaitu:
             </Text>
             <Text style={[styles.desk, {paddingLeft: 10}]}>
-              - Daniel Sipangkar (11814080)
+              - Daniel Sipangkar (118140080)
             </Text>
             <Text style={[styles.desk, {paddingLeft: 10}]}>
-              - Cita Sari Siadari
+              - Cita Sari Marito Siadari (118140172)
             </Text>
             <Text style={[styles.desk, {paddingLeft: 10}]}>
-              - Vina Alvionita
+              - Vina Alvionita (118140105)
             </Text>
             <Text style={[styles.desk, {paddingLeft: 10}]}>- Yuni</Text>
           </View>
