@@ -182,7 +182,7 @@ class TambahDanus extends Component {
         },
       ]);
     } else {
-      fetch('http://10.117.91.46/api/API-DanusanApp/API/TambahDanus.php', {
+      fetch('https://danustera.000webhostapp.com/TambahDanus.php', {
         method: 'POST',
         headers: {
           Accept: 'application/json',

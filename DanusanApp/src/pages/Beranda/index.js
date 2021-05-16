@@ -20,7 +20,7 @@ const Beranda = ({navigation}) => {
   const getDataFromApiAsync = async () => {
     try {
       let response = await fetch(
-        'http://10.117.91.46/api/API-DanusanApp/API/tampil.php',
+        'https://danustera.000webhostapp.com/tampil.php',
       );
       isLoading = true;
       let json = await response.json();
