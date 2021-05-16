@@ -58,7 +58,7 @@ class TambahDanus extends Component {
             </TouchableOpacity>
             <View style={styles.row}>
               <TextInput
-                placeholder="Nama Makanan"
+                placeholder="Nama makanan"
                 style={styles.form}
                 onChangeText={nama_makanan =>
                   this.setState(prevState => ({
@@ -85,7 +85,7 @@ class TambahDanus extends Component {
                 value={deskripsi_makanan}
               />
               <TextInput
-                placeholder="Stok Perhari"
+                placeholder="Stok perhari"
                 style={styles.form}
                 onChangeText={stok_harian =>
                   this.setState(prevState => ({
@@ -98,7 +98,7 @@ class TambahDanus extends Component {
                 value={stok_harian}
               />
               <TextInput
-                placeholder="Harga Satuan"
+                placeholder="Harga satuan"
                 style={styles.form}
                 onChangeText={harga_satuan =>
                   this.setState(prevState => ({
