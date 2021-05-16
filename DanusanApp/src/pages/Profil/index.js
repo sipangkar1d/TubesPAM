@@ -67,7 +67,7 @@ const Profil = ({navigation}) => {
           </View>
           <View style={[styles.row, {borderBottomWidth: 1}]}>
             <Text style={styles.teksform}>No Telepon</Text>
-            <Text style={styles.data}>{item.no_telp}</Text>
+            <Text style={styles.data}> +62 {item.no_telp}</Text>
           </View>
         </View>
         <View style={styles.listdata}>
