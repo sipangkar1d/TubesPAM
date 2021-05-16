@@ -67,8 +67,8 @@ class DeskripsiDanus extends Component {
             <View style={styles.kanan}>
               <Text style={styles.teks}>: {nama_penjual}</Text>
               <Text style={styles.teks}>: {alamat}</Text>
-              <Text style={styles.teks}>: {no_telp}</Text>
-              <Text style={styles.teks}>: Rp. {harga_satuan}</Text>
+              <Text style={styles.teks}>: +62 {no_telp}</Text>
+              <Text style={styles.teks}>: Rp. {harga_satuan} ,- </Text>
               <Text style={styles.teks}>: {stok_harian} /hari</Text>
             </View>
           </View>
