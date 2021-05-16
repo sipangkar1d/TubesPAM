@@ -20,7 +20,7 @@ const Beranda = ({navigation}) => {
   const getDataFromApiAsync = async () => {
     try {
       let response = await fetch(
-        'http://10.117.90.83/api/API-DanusanApp/API/tampil.php',
+        'http://10.117.91.46/api/API-DanusanApp/API/tampil.php',
       );
       isLoading = true;
       let json = await response.json();
@@ -62,8 +62,8 @@ const Beranda = ({navigation}) => {
               }}
             />
             <Text style={styles.nama}>{item.nama_makanan}</Text>
-            <Text style={styles.harga}>Rp. {item.harga_satuan}</Text>
-            <Text style={styles.np}>{item.nama_lengkap},-</Text>
+            <Text style={styles.harga}>Rp. {item.harga_satuan},-</Text>
+            <Text style={styles.np}>{item.nama_lengkap}</Text>
           </View>
         </TouchableOpacity>
       </View>
