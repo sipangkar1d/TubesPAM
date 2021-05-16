@@ -62,7 +62,7 @@ const Beranda = ({navigation}) => {
               }}
             />
             <Text style={styles.nama}>{item.nama_makanan}</Text>
-            <Text style={styles.harga}>Rp. {item.harga_satuan},-</Text>
+            <Text style={styles.harga}>Rp. {item.harga_satuan}</Text>
             <Text style={styles.np}>{item.nama_lengkap},-</Text>
           </View>
         </TouchableOpacity>
