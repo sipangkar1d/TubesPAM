@@ -45,7 +45,7 @@ class TambahDanus extends Component {
       : require('../../assets/images/noImage.png');
     const user = route.params.username;
     this.state.formData.username = user;
-    console.log('ditangkap di tambah danus', this.state.formData.username);
+    
     return (
       <ScrollView>
         <View style={styles.container}>
