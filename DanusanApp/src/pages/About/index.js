@@ -37,7 +37,9 @@ const About = ({navigation}) => {
             <Text style={[styles.desk, {paddingLeft: 10}]}>
               - Vina Alvionita (118140105)
             </Text>
-            <Text style={[styles.desk, {paddingLeft: 10}]}>- Yuni</Text>
+            <Text style={[styles.desk, {paddingLeft: 10}]}>
+              - Yuni Nurdiyanti 118140044
+            </Text>
           </View>
         </View>
       </View>
