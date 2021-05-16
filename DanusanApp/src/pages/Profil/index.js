@@ -21,7 +21,7 @@ const Profil = ({navigation}) => {
   const getDataFromApiAsync = async () => {
     try {
       let response = await fetch(
-        'http://10.117.90.83/api/API-DanusanApp/API/profil.php',
+        'http://10.117.91.46/api/API-DanusanApp/API/profil.php',
         {
           method: 'POST',
           header: {
@@ -67,7 +67,7 @@ const Profil = ({navigation}) => {
           </View>
           <View style={[styles.row, {borderBottomWidth: 1}]}>
             <Text style={styles.teksform}>No Telepon</Text>
-            <Text style={styles.data}> +62 {item.no_telp}</Text>
+            <Text style={styles.data}>+62 {item.no_telp}</Text>
           </View>
         </View>
         <View style={styles.listdata}>
