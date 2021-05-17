@@ -212,7 +212,7 @@ class Daftar extends Component {
       this.refs.loading.show(false);
     } else {
       this.refs.loading.show();
-      fetch('https://danustera.000webhostapp.com/buatAkun.php', {
+      fetch('http://tubespam.awesomeproject.id/buatAkun.php', {
         method: 'POST',
         headers: {
           Accept: 'application/json',

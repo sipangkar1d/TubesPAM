@@ -20,7 +20,7 @@ const Cari = ({navigation}) => {
   var isLoading = false;
 
   const fetchPost = () => {
-    const apiUrl = 'https://danustera.000webhostapp.com/tampil.php';
+    const apiUrl = 'http://tubespam.awesomeproject.id/cari.php';
     isLoading = true;
     fetch(apiUrl)
       .then(response => response.json())

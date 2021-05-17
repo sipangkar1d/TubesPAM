@@ -67,7 +67,7 @@ class Login extends Component {
     } else if (password == '') {
       alert('Password masih kosong');
     } else {
-      fetch('https://danustera.000webhostapp.com/Login.php', {
+      fetch('http://tubespam.awesomeproject.id/Login.php', {
         method: 'POST',
         header: {
           Accept: 'application/json',

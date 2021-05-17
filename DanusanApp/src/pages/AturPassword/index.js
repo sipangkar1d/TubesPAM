@@ -72,7 +72,7 @@ class Login extends Component {
     } else if (password == '') {
       alert('Isi password baru');
     } else {
-      fetch('https://danustera.000webhostapp.com/aturpass.php', {
+      fetch('http://tubespam.awesomeproject.id/AturPassword.php', {
         method: 'POST',
         header: {
           Accept: 'application/json',

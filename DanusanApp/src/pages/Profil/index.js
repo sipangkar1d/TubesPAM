@@ -21,7 +21,7 @@ const Profil = ({navigation}) => {
   const getDataFromApiAsync = async () => {
     try {
       let response = await fetch(
-        'https://danustera.000webhostapp.com/profil.php',
+        'http://tubespam.awesomeproject.id/profil.php',
         {
           method: 'POST',
           header: {

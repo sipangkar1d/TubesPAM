@@ -20,7 +20,7 @@ const Beranda = ({navigation}) => {
   const getDataFromApiAsync = async () => {
     try {
       let response = await fetch(
-        'https://danustera.000webhostapp.com/tampil.php',
+        'http://tubespam.awesomeproject.id/tampil.php',
       );
       isLoading = true;
       let json = await response.json();

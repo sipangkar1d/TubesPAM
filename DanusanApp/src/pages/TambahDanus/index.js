@@ -182,7 +182,7 @@ class TambahDanus extends Component {
         },
       ]);
     } else {
-      fetch('https://danustera.000webhostapp.com/TambahDanus.php', {
+      fetch('http://tubespam.awesomeproject.id/TambahDanus.php', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
