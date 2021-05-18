@@ -45,7 +45,7 @@ const Beranda = ({navigation}) => {
             navigation.navigate('DeskripsiDanus', {
               nama_makanan: item.nama_makanan,
               foto_makanan: item.foto_makanan,
-              deksripsi_makanan: item.deksripsi_makanan,
+              deskripsi_makanan: item.deskripsi_makanan,
               nama_lengkap: item.nama_lengkap,
               stok_harian: item.stok_harian,
               alamat: item.alamat,
@@ -116,6 +116,7 @@ const styles = StyleSheet.create({
   },
   body: {
     width: windowWidth + 2,
+    height: windowHeight+windowHeight/17,
     borderRadius: 20,
     borderColor: '#138BFE',
     borderWidth: 1,

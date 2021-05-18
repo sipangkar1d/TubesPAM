@@ -17,7 +17,7 @@ class DeskripsiDanus extends Component {
     // console.log('nama makanan:', nm);
     var nama_penjual = route.params.nama_lengkap;
     var nama_makanan = route.params.nama_makanan;
-    var deksripsi_makanan = route.params.deksripsi_makanan;
+    var deskripsi_makanan = route.params.deskripsi_makanan;
     var alamat = route.params.alamat;
     var no_telp = route.params.no_telp;
     var harga_satuan = route.params.harga_satuan;
@@ -53,9 +53,7 @@ class DeskripsiDanus extends Component {
               uri: gambar,
             }}
           />
-          <View style={{flexDirection: 'row'}}>
-            <Text style={styles.desk}>{deksripsi_makanan}</Text>
-          </View>
+          <Text style={styles.desk}>{deskripsi_makanan}</Text>
           <View style={styles.form}>
             <View style={styles.kiri}>
               <Text style={styles.teks}>Nama Penjual</Text>
@@ -67,7 +65,7 @@ class DeskripsiDanus extends Component {
             <View style={styles.kanan}>
               <Text style={styles.teks}>: {nama_penjual}</Text>
               <Text style={styles.teks}>: {alamat}</Text>
-              <Text style={styles.teks}>: +62 {no_telp}</Text>
+              <Text style={styles.teks}>: {no_telp}</Text>
               <Text style={styles.teks}>: Rp. {harga_satuan} ,- </Text>
               <Text style={styles.teks}>: {stok_harian} /hari</Text>
             </View>
@@ -130,9 +128,10 @@ const styles = StyleSheet.create({
     top: 20,
   },
   desk: {
-    paddingVertical: 10,
-    alignSelf: 'flex-start',
-    paddingHorizontal: 20,
-    flex: 1,
+    fontWeight: 'bold',
+    fontSize: 14,
+    color: '#696969',
+    position: 'relative',
+    marginVertical: 20,
   },
 });
