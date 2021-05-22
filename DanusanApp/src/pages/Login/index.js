@@ -43,6 +43,7 @@ class Login extends Component {
               onChangeText={password => this.setState({password})}
             />
           </View>
+          <Text>{JSON.stringify(this.state)}</Text>
           <View
             style={{paddingTop: 20, width: WindowWidth - 40, borderRadius: 10}}>
             <Button title="Masuk" onPress={this._login} />
@@ -83,7 +84,7 @@ class Login extends Component {
               username: username,
             });
           } else {
-            alert(JSON.stringify(responseJson));
+            alert(responseJson);
           }
         })
         .catch(error => {
